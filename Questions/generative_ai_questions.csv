@@ -1,0 +1,121 @@
+id,learningOutcome,bloomsLevel,question,option1,option2,option3,option4,correctAnswer,level
+1,LO1,Remembering,What is the primary function of generative AI?,Generate new content,Analyze data,Classify images,Optimize algorithms,Generate new content,Easy
+2,LO1,Remembering,Which type of AI model is commonly used for generating text?,GAN,Transformer,CNN,RNN,Transformer,Easy
+3,LO1,Remembering,What does the acronym GAN stand for in generative AI?,Generative Adversarial Network,Generalized AI Node,Global Algorithm Network,Gradient Analysis Node,Generative Adversarial Network,Easy
+4,LO1,Remembering,Which company developed the AI model known as DALL-E?,OpenAI,Google,Microsoft,Meta,OpenAI,Easy
+5,LO1,Remembering,What type of content can generative AI create?,Text,Images,Audio,All of the above,All of the above,Easy
+6,LO1,Remembering,Which AI model is known for generating human-like text responses?,GPT,ResNet,VGG,Inception,GPT,Easy
+7,LO1,Remembering,What is a common application of generative AI in art?,Creating digital paintings,Data sorting,Network security,Database management,Creating digital paintings,Easy
+8,LO1,Remembering,Which of these is a generative AI tool for music creation?,Amper Music,TensorFlow,Scikit-learn,Pandas,Amper Music,Easy
+9,LO1,Remembering,What is the main purpose of the "generator" in a GAN?,Create fake data,Classify data,Optimize code,Reduce noise,Create fake data,Medium
+10,LO1,Remembering,Which generative AI model is designed for image generation?,DALL-E,BERT,RoBERTa,T5,DALL-E,Medium
+11,LO1,Remembering,What is the role of the "discriminator" in a GAN?,Distinguish real data from fake,Generate new data,Train the dataset,Label the data,Distinguish real data from fake,Medium
+12,LO1,Remembering,Which field uses generative AI to create synthetic datasets?,Machine learning,Cybersecurity,Web development,Hardware design,Machine learning,Medium
+13,LO1,Remembering,What type of neural network is the foundation for GPT models?,Transformer,CNN,LSTM,MLP,Transformer,Medium
+14,LO1,Remembering,Which generative AI tool is known for creating deepfake videos?,DeepFaceLab,PyTorch,NumPy,Keras,DeepFaceLab,Medium
+15,LO1,Remembering,What is a key ethical concern with generative AI?,Creating misinformation,Improving accuracy,Reducing costs,Enhancing security,Creating misinformation,Medium
+16,LO1,Remembering,Which company developed the generative AI model Stable Diffusion?,Stability AI,Microsoft,Amazon,IBM,Stability AI,Medium
+17,LO1,Remembering,What percentage of AI-generated text is often indistinguishable from human text in studies?,Around 90%,Around 50%,Around 30%,Around 10%,Around 90%,Hard
+18,LO1,Remembering,Which loss function is commonly used to train GANs?,Adversarial loss,Mean squared error,Cross-entropy loss,KL divergence,Adversarial loss,Hard
+19,LO1,Remembering,What is the primary challenge in training generative AI models like GANs?,Mode collapse,Overfitting,Underfitting,Data labeling,Mode collapse,Hard
+20,LO1,Remembering,Which generative AI model was the first to generate photorealistic human faces?,StyleGAN,BERT,ELMo,ALBERT,StyleGAN,Hard
+21,LO1,Remembering,What is a common dataset used for training image-generating AI models?,ImageNet,CIFAR-10,MNIST,COCO,COCO,Hard
+22,LO1,Remembering,Which technique helps stabilize GAN training by adding noise to the discriminator?,Label smoothing,Dropout,Batch normalization,Gradient clipping,Label smoothing,Hard
+23,LO1,Remembering,What is the main limitation of early generative AI models like VAEs?,Blurry outputs,High accuracy,Slow training,Low memory usage,Blurry outputs,Hard
+24,LO1,Remembering,Which generative AI model introduced the concept of "latent space" for image manipulation?,VAE,GPT,BERT,T5,VAE,Hard
+25,LO2,Remembering,What is the term for AI-generated media that mimics real content?,Deepfake,Big data,Cloud computing,Quantum computing,Deepfake,Easy
+26,LO2,Remembering,Which type of generative AI model is used for creating 3D models?,NeRF,CNN,RNN,LSTM,NeRF,Easy
+27,LO2,Remembering,What is the main goal of text-to-image generative AI models?,Convert text to images,Classify text,Translate text,Analyze text,Convert text to images,Easy
+28,LO2,Remembering,Which tool is used for generating AI-based video content?,RunwayML,Tableau,Excel,PowerBI,RunwayML,Easy
+29,LO2,Remembering,What type of AI model powers ChatGPT?,Generative AI,Supervised AI,Reinforcement AI,Unsupervised AI,Generative AI,Easy
+30,LO2,Remembering,Which generative AI application is used in gaming?,Procedural content generation,Data encryption,Network optimization,Hardware acceleration,Procedural content generation,Easy
+31,LO2,Remembering,What does "text-to-speech" generative AI produce?,Audio,Text,Images,Code,Audio,Easy
+32,LO2,Remembering,Which company developed the generative AI model Midjourney?,Midjourney Inc.,Google,Facebook,Apple,Midjourney Inc.,Easy
+33,LO2,Remembering,What is a common use of generative AI in the film industry?,Creating special effects,Data storage,Network security,Database management,Creating special effects,Medium
+34,LO2,Remembering,Which generative AI model is used for generating code snippets?,GitHub Copilot,BERT,RoBERTa,ELMo,GitHub Copilot,Medium
+35,LO2,Remembering,What is the primary use of generative AI in fashion design?,Generate clothing designs,Optimize pricing,Analyze sales,Track inventory,Generate clothing designs,Medium
+36,LO2,Remembering,Which generative AI tool is known for creating AI-generated voices?,Descript,Matplotlib,Scikit-learn,TensorFlow,Descript,Medium
+37,LO2,Remembering,What is the main advantage of using generative AI in product design?,Rapid prototyping,Data compression,Error detection,Cost reduction,Rapid prototyping,Medium
+38,LO2,Remembering,Which industry uses generative AI to create synthetic patient data?,Healthcare,Automotive,Construction,Retail,Healthcare,Medium
+39,LO2,Remembering,What is a key benefit of using generative AI in advertising?,Personalized content,Reduced bandwidth,Improved hardware,Faster processing,Personalized content,Medium
+40,LO2,Remembering,Which generative AI model is used for text-to-video generation?,Sora,T5,BERT,ALBERT,Sora,Medium
+41,LO2,Remembering,What percentage of businesses used generative AI for content creation in 2024 surveys?,Around 65%,Around 20%,Around 10%,Around 5%,Around 65%,Hard
+42,LO2,Remembering,Which generative AI technique is used to create realistic virtual avatars?,3D GANs,2D CNNs,LSTM,RNN,3D GANs,Hard
+43,LO2,Remembering,What is the primary challenge in generating coherent long-form AI text?,Maintaining context,Reducing noise,Increasing speed,Lowering costs,Maintaining context,Hard
+44,LO2,Remembering,Which dataset is commonly used for training text-to-speech generative AI models?,LibriSpeech,MNIST,ImageNet,COCO,LibriSpeech,Hard
+45,LO2,Remembering,What is the main limitation of generative AI in video generation?,High computational cost,Low accuracy,Slow internet,Small datasets,High computational cost,Hard
+46,LO2,Remembering,Which generative AI model introduced the concept of "diffusion" for image generation?,DDPM,GPT,BERT,T5,DDPM,Hard
+47,LO2,Remembering,What is a common metric for evaluating generative AI image quality?,FID,Accuracy,Precision,Recall,FID,Hard
+48,LO2,Remembering,Which generative AI application is used to create virtual environments in the metaverse?,Procedural generation,Data mining,Cloud storage,Quantum computing,Procedural generation,Hard
+49,LO3,Remembering,What is the term for AI-generated content that imitates a specific style?,Style transfer,Data compression,Feature extraction,Model optimization,Style transfer,Easy
+50,LO3,Remembering,Which type of generative AI model is used for music generation?,MuseNet,CNN,RNN,LSTM,MuseNet,Easy
+51,LO3,Remembering,What is a common use of generative AI in education?,Creating study materials,Grading exams,Tracking attendance,Managing schedules,Creating study materials,Easy
+52,LO3,Remembering,Which generative AI tool is used for generating AI art?,Artbreeder,Excel,PowerPoint,Tableau,Artbreeder,Easy
+53,LO3,Remembering,What does "prompt engineering" refer to in generative AI?,Crafting input prompts,Optimizing hardware,Reducing latency,Encrypting data,Crafting input prompts,Easy
+54,LO3,Remembering,Which type of content is generated by AI models like VALL-E?,Voice,Text,Images,Code,Voice,Easy
+55,LO3,Remembering,What is the main purpose of generative AI in content marketing?,Create engaging content,Analyze data,Optimize networks,Secure systems,Create engaging content,Easy
+56,LO3,Remembering,Which company developed the generative AI model Imagen?,Google,Microsoft,Meta,Amazon,Google,Easy
+57,LO3,Remembering,What is a common application of generative AI in journalism?,Writing articles,Data encryption,Hardware design,Network security,Writing articles,Medium
+58,LO3,Remembering,Which generative AI model is used for creating AI-generated poetry?,Grok,BERT,T5,ELMo,Grok,Medium
+59,LO3,Remembering,What is the main goal of using generative AI in simulations?,Create realistic scenarios,Reduce accuracy,Increase latency,Lower quality,Create realistic scenarios,Medium
+60,LO3,Remembering,Which generative AI tool is known for generating AI-based stories?,NovelAI,Matplotlib,Pandas,NumPy,NovelAI,Medium
+61,LO3,Remembering,What is a key advantage of generative AI in game development?,Automating asset creation,Reducing gameplay,Increasing bugs,Slowing production,Automating asset creation,Medium
+62,LO3,Remembering,Which industry uses generative AI to generate synthetic financial data?,Finance,Construction,Automotive,Retail,Finance,Medium
+63,LO3,Remembering,What is the main benefit of generative AI in language translation?,Generate natural translations,Reduce accuracy,Increase latency,Lower quality,Generate natural translations,Medium
+64,LO3,Remembering,Which generative AI model is used for creating AI-generated faces?,ThisPersonDoesNotExist,BERT,T5,ALBERT,ThisPersonDoesNotExist,Medium
+65,LO3,Remembering,What percentage of AI-generated images were used in advertising campaigns in 2024?,Around 40%,Around 10%,Around 5%,Around 1%,Around 40%,Hard
+66,LO3,Remembering,Which generative AI technique is used to create AI-generated textures for 3D models?,Texture synthesis,Data compression,Feature extraction,Model optimization,Texture synthesis,Hard
+67,LO3,Remembering,What is the primary challenge in generating AI-based music?,Maintaining coherence,Reducing noise,Increasing speed,Lowering costs,Maintaining coherence,Hard
+68,LO3,Remembering,Which dataset is commonly used for training AI models for style transfer?,WikiArt,MNIST,ImageNet,COCO,WikiArt,Hard
+69,LO3,Remembering,What is the main limitation of generative AI in creating realistic simulations?,High computational cost,Low accuracy,Slow internet,Small datasets,High computational cost,Hard
+70,LO3,Remembering,Which generative AI model introduced the concept of "attention mechanisms" for text generation?,Transformer,GPT,BERT,T5,Transformer,Hard
+71,LO3,Remembering,What is a common metric for evaluating generative AI text quality?,BLEU,Accuracy,Precision,Recall,BLEU,Hard
+72,LO3,Remembering,Which generative AI application is used to create AI-generated virtual assistants?,Dialog generation,Data mining,Cloud storage,Quantum computing,Dialog generation,Hard
+73,LO4,Remembering,What is the term for the dataset used to train a generative AI model?,Training data,Test data,Validation data,Output data,Training data,Easy
+74,LO4,Remembering,Which type of generative AI model is used for generating realistic human voices?,WaveNet,CNN,RNN,LSTM,WaveNet,Easy
+75,LO4,Remembering,What is a common use of generative AI in architecture?,Generate building designs,Data storage,Network security,Hardware acceleration,Generate building designs,Easy
+76,LO4,Remembering,Which generative AI tool is used for creating AI-generated logos?,Looka,Excel,PowerPoint,Tableau,Looka,Easy
+77,LO4,Remembering,What does "fine-tuning" refer to in generative AI?,Adjusting a pre-trained model,Creating a new model,Reducing latency,Encrypting data,Adjusting a pre-trained model,Easy
+78,LO4,Remembering,Which type of content is generated by AI models like CLIP?,Image captions,Text,Audio,Code,Image captions,Easy
+79,LO4,Remembering,What is the main purpose of generative AI in e-commerce?,Create product descriptions,Analyze data,Optimize networks,Secure systems,Create product descriptions,Easy
+80,LO4,Remembering,Which company developed the generative AI model Grok?,xAI,Microsoft,Meta,Amazon,xAI,Easy
+81,LO4,Remembering,What is a common application of generative AI in customer service?,Generating chat responses,Data encryption,Hardware design,Network security,Generating chat responses,Medium
+82,LO4,Remembering,Which generative AI model is used for creating AI-generated animations?,Kaiber,BERT,T5,ELMo,Kaiber,Medium
+83,LO4,Remembering,What is the main goal of using generative AI in virtual reality?,Create immersive environments,Reduce accuracy,Increase latency,Lower quality,Create immersive environments,Medium
+84,LO4,Remembering,Which generative AI tool is known for generating AI-based designs?,Canva AI,Matplotlib,Pandas,NumPy,Canva AI,Medium
+85,LO4,Remembering,What is a key advantage of generative AI in software development?,Automating code generation,Reducing gameplay,Increasing bugs,Slowing production,Automating code generation,Medium
+86,LO4,Remembering,Which industry uses generative AI to generate synthetic legal documents?,Legal,Construction,Automotive,Retail,Legal,Medium
+87,LO4,Remembering,What is the main benefit of generative AI in graphic design?,Generate creative visuals,Reduce accuracy,Increase latency,Lower quality,Generate creative visuals,Medium
+88,LO4,Remembering,Which generative AI model is used for creating AI-generated 3D objects?,Point-E,BERT,T5,ALBERT,Point-E,Medium
+89,LO4,Remembering,What percentage of AI-generated content was used in social media marketing in 2024?,Around 50%,Around 10%,Around 5%,Around 1%,Around 50%,Hard
+90,LO4,Remembering,Which generative AI technique is used to create AI-generated landscapes?,Scene synthesis,Data compression,Feature extraction,Model optimization,Scene synthesis,Hard
+91,LO4,Remembering,What is the primary challenge in generating AI-based animations?,Maintaining smoothness,Reducing noise,Increasing speed,Lowering costs,Maintaining smoothness,Hard
+92,LO4,Remembering,Which dataset is commonly used for training AI models for 3D object generation?,ShapeNet,MNIST,ImageNet,COCO,ShapeNet,Hard
+93,LO4,Remembering,What is the main limitation of generative AI in creating realistic virtual environments?,High computational cost,Low accuracy,Slow internet,Small datasets,High computational cost,Hard
+94,LO4,Remembering,Which generative AI model introduced the concept of "cross-attention" for text-to-image generation?,DALL-E 2,GPT,BERT,T5,DALL-E 2,Hard
+95,LO4,Remembering,What is a common metric for evaluating generative AI audio quality?,PESQ,Accuracy,Precision,Recall,PESQ,Hard
+96,LO4,Remembering,Which generative AI application is used to create AI-generated product prototypes?,Design synthesis,Data mining,Cloud storage,Quantum computing,Design synthesis,Hard
+97,LO5,Remembering,What is the term for the process of generating new data using AI?,Data synthesis,Data compression,Data encryption,Data validation,Data synthesis,Easy
+98,LO5,Remembering,Which type of generative AI model is used for generating realistic handwriting?,DeepWrite,CNN,RNN,LSTM,DeepWrite,Easy
+99,LO5,Remembering,What is a common use of generative AI in research?,Generate hypotheses,Data storage,Network security,Hardware acceleration,Generate hypotheses,Easy
+100,LO5,Remembering,Which generative AI tool is used for creating AI-generated presentations?,Tome,Excel,PowerPoint,Tableau,Tome,Easy
+101,LO5,Remembering,What does "data augmentation" refer to in generative AI?,Generating synthetic data,Reducing data,Encrypting data,Validating data,Generating synthetic data,Easy
+102,LO5,Remembering,Which type of content is generated by AI models like Murf AI?,Voiceovers,Text,Images,Code,Voiceovers,Easy
+103,LO5,Remembering,What is the main purpose of generative AI in entertainment?,Create engaging content,Analyze data,Optimize networks,Secure systems,Create engaging content,Easy
+104,LO5,Remembering,Which company developed the generative AI model LLaVA?,Meta,Microsoft,Google,Amazon,Meta,Easy
+105,LO5,Remembering,What is a common application of generative AI in publishing?,Generating book summaries,Data encryption,Hardware design,Network security,Generating book summaries,Medium
+106,LO5,Remembering,Which generative AI model is used for creating AI-generated comics?,ComicGen,BERT,T5,ELMo,ComicGen,Medium
+107,LO5,Remembering,What is the main goal of using generative AI in data science?,Generate synthetic datasets,Reduce accuracy,Increase latency,Lower quality,Generate synthetic datasets,Medium
+108,LO5,Remembering,Which generative AI tool is known for generating AI-based emails?,Jasper,Matplotlib,Pandas,NumPy,Jasper,Medium
+109,LO5,Remembering,What is a key advantage of generative AI in medical research?,Simulating drug interactions,Reducing gameplay,Increasing bugs,Slowing production,Simulating drug interactions,Medium
+110,LO5,Remembering,Which industry uses generative AI to generate synthetic user behavior data?,Tech,Construction,Automotive,Retail,Tech,Medium
+111,LO5,Remembering,What is the main benefit of generative AI in content creation?,Increase efficiency,Reduce accuracy,Increase latency,Lower quality,Increase efficiency,Medium
+112,LO5,Remembering,Which generative AI model is used for creating AI-generated fashion designs?,FashionAI,BERT,T5,ALBERT,FashionAI,Medium
+113,LO5,Remembering,What percentage of AI-generated content was used in academic research in 2024?,Around 30%,Around 10%,Around 5%,Around 1%,Around 30%,Hard
+114,LO5,Remembering,Which generative AI technique is used to create AI-generated medical images?,MedSynth,Data compression,Feature extraction,Model optimization,MedSynth,Hard
+115,LO5,Remembering,What is the primary challenge in generating AI-based research papers?,Maintaining factual accuracy,Reducing noise,Increasing speed,Lowering costs,Maintaining factual accuracy,Hard
+116,LO5,Remembering,Which dataset is commonly used for training AI models for handwriting generation?,IAM Handwriting,MNIST,ImageNet,COCO,IAM Handwriting,Hard
+117,LO5,Remembering,What is the main limitation of generative AI in creating realistic synthetic data?,Bias in training data,Low accuracy,Slow internet,Small datasets,Bias in training data,Hard
+118,LO5,Remembering,Which generative AI model introduced the concept of "few-shot learning" for text generation?,GPT-3,GPT,BERT,T5,GPT-3,Hard
+119,LO5,Remembering,What is a common metric for evaluating generative AI video quality?,SSIM,Accuracy,Precision,Recall,SSIM,Hard
+120,LO5,Remembering,Which generative AI application is used to create AI-generated scientific simulations?,SimSynth,Data mining,Cloud storage,Quantum computing,SimSynth,Hard

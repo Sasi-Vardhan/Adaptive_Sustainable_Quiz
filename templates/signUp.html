@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>EduPath - Personalized Learning Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #fafafa;
+            color: #1a1a1a;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .main-container {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            min-height: 100vh;
+        }
+
+        /* Left Side - Login Form */
+        .left-panel {
+            background: white;
+            padding: 60px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: 2px 0 30px rgba(0, 0, 0, 0.08);
+            position: relative;
+            z-index: 2;
+        }
+
+        .brand-section {
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .brand-section h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+
+        .brand-section p {
+            font-size: 1rem;
+            color: #666;
+            font-weight: 400;
+        }
+
+        .wrapper {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .wrapper h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 32px;
+            text-align: center;
+            letter-spacing: -0.01em;
+        }
+
+        .input-box {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .input-box input {
+            width: 100%;
+            height: 56px;
+            background: #fafafa;
+            border: 2px solid #e8e8e8;
+            border-radius: 12px;
+            font-size: 16px;
+            color: #1a1a1a;
+            padding: 0 56px 0 20px;
+            font-weight: 400;
+            transition: all 0.3s ease;
+        }
+
+        .input-box input:focus {
+            outline: none;
+            border-color: #000;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .input-box input::placeholder {
+            color: #999;
+            font-weight: 400;
+        }
+
+        .input-box i {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+            color: #666;
+        }
+
+        .btn {
+            width: 100%;
+            height: 56px;
+            background: #000;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 16px;
+        }
+
+        .btn:hover {
+            background: #1a1a1a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn2 {
+            display: block;
+            text-align: center;
+            margin-top: 24px;
+            color: #666;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 15px;
+            transition: color 0.3s ease;
+        }
+
+        .btn2:hover {
+            color: #000;
+        }
+
+        .stats-mini {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .stat-mini {
+            text-align: center;
+        }
+
+        .stat-mini .number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 4px;
+        }
+
+        .stat-mini .label {
+            font-size: 0.875rem;
+            color: #666;
+        }
+
+        /* Right Side - Content */
+        .right-panel {
+            background: #fafafa;
+            padding: 60px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow-y: auto;
+        }
+
+        .content-section {
+            max-width: 100%;
+        }
+
+        .image-container {
+            margin-bottom: 50px;
+        }
+
+        .platform-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
+        }
+
+        .content-text h2 {
+            font-size: 2.75rem;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 32px;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .motivational-content p {
+            font-size: 1.25rem;
+            color: #4a4a4a;
+            margin-bottom: 24px;
+            font-weight: 400;
+            line-height: 1.7;
+        }
+
+        .highlight {
+            color: #000;
+            font-weight: 600;
+        }
+
+        .features-list {
+            margin-top: 40px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 32px;
+            padding: 24px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-4px);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: #f8f8f8;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .feature-content h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 8px;
+        }
+
+        .feature-content p {
+            font-size: 1rem;
+            color: #666;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .main-container {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .left-panel,
+            .right-panel {
+                padding: 40px 30px;
+            }
+
+            .content-text h2 {
+                font-size: 2.25rem;
+            }
+
+            .motivational-content p {
+                font-size: 1.125rem;
+            }
+
+            .platform-image {
+                height: 320px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto 1fr;
+            }
+
+            .left-panel {
+                min-height: auto;
+                padding: 40px 30px;
+                box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            }
+
+            .right-panel {
+                padding: 40px 30px;
+            }
+
+            .brand-section {
+                margin-bottom: 30px;
+            }
+
+            .brand-section h1 {
+                font-size: 2rem;
+            }
+
+            .wrapper h2 {
+                font-size: 1.5rem;
+                margin-bottom: 24px;
+            }
+
+            .content-text h2 {
+                font-size: 2rem;
+                margin-bottom: 24px;
+            }
+
+            .motivational-content p {
+                font-size: 1rem;
+                margin-bottom: 20px;
+            }
+
+            .platform-image {
+                height: 280px;
+                margin-bottom: 30px;
+            }
+
+            .stats-mini {
+                margin-top: 30px;
+                padding-top: 20px;
+            }
+
+            .feature-item {
+                padding: 20px;
+                margin-bottom: 24px;
+            }
+
+            .feature-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+                margin-right: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .left-panel,
+            .right-panel {
+                padding: 30px 20px;
+            }
+
+            .brand-section h1 {
+                font-size: 1.75rem;
+            }
+
+            .content-text h2 {
+                font-size: 1.75rem;
+            }
+
+            .platform-image {
+                height: 240px;
+                border-radius: 16px;
+            }
+
+            .input-box {
+                margin-bottom: 16px;
+            }
+
+            .input-box input {
+                height: 52px;
+                font-size: 15px;
+            }
+
+            .btn {
+                height: 52px;
+                font-size: 15px;
+            }
+
+            .stats-mini {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .feature-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .feature-icon {
+                margin: 0 auto 16px;
+            }
+        }
+
+        /* Animation for smooth entrance */
+        .left-panel,
+        .right-panel {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <!-- Left Panel - Login Form -->
+        <div class="left-panel">
+            <div class="brand-section">
+                <h1>EduPath</h1>
+                <p>Personalized Learning Excellence</p>
+            </div>
+
+            <div class="wrapper">
+                <form method="post" action="{{ url_for('auth.signup') }}">
+                    <h2>Begin Your Journey</h2>
+                    <div class="input-box">
+                        <input type="text" placeholder="Full Name" name="name" required>
+                        <i class='bx bxs-user'></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="email" placeholder="Email Address" name="email" required>
+                        <i class='bx bxs-envelope'></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" placeholder="Create Password" name="password" required>
+                        <i class='bx bxs-lock-alt'></i>
+                    </div>
+                    <button type="submit" class="btn">Get Started</button>
+                    <a href="{{ url_for('auth.login') }}" class="btn2">Already have an account? Sign in</a>
+                </form>
+
+                <div class="stats-mini">
+                    <div class="stat-mini">
+                        <div class="number">50K+</div>
+                        <div class="label">Students</div>
+                    </div>
+                    <div class="stat-mini">
+                        <div class="number">95%</div>
+                        <div class="label">Success</div>
+                    </div>
+                    <div class="stat-mini">
+                        <div class="number">200+</div>
+                        <div class="label">Courses</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel - Content -->
+        <div class="right-panel">
+            <div class="content-section">
+                <!-- Image Section -->
+                <div class="image-container">
+                    <img src="https://www.frontier-ehr.com/wp-content/uploads/2022/03/ILP.jpg" alt="Personalized Learning Platform" class="platform-image">
+                </div>
+
+                <!-- Text Content -->
+                <div class="content-text">
+                    <h2>Transform Your Learning Experience</h2>
+                    <div class="motivational-content">
+                        <p>Experience the future of education with our <span class="highlight">AI-powered personalized learning platform</span>. Every student learns differently, and our intelligent system adapts to your unique learning style and pace.</p>
+                        
+                        <p>Join thousands of learners who have discovered their potential through <span class="highlight">customized learning paths and real-time progress tracking</span>.</p>
+                    </div>
+
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class='bx bx-brain'></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3>Adaptive Learning</h3>
+                                <p>AI analyzes your learning patterns and adjusts content difficulty to match your optimal pace.</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class='bx bx-line-chart'></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3>Progress Tracking</h3>
+                                <p>Monitor your growth with detailed analytics and personalized learning insights.</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class='bx bx-users'></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3>Community Learning</h3>
+                                <p>Connect with peers and learn collaboratively in our supportive environment.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Enhanced input focus effects
+            const inputs = document.querySelectorAll('.input-box input');
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentElement.style.transform = 'translateY(-2px)';
+                });
+                
+                input.addEventListener('blur', function() {
+                    this.parentElement.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Smooth animation for feature items
+            const featureItems = document.querySelectorAll('.feature-item');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }, index * 150);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            featureItems.forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                item.style.transition = 'all 0.6s ease';
+                observer.observe(item);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Generative AI - Personalized Learning</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #f8fafc;
+            --secondary-color: #f1f5f9;
+            --accent-pink: #fce7f3;
+            --accent-blue: #dbeafe;
+            --accent-purple: #e9d5ff;
+            --accent-mint: #d1fae5;
+            --accent-peach: #fed7aa;
+            --text-dark: #1e293b;
+            --text-medium: #475569;
+            --text-light: #64748b;
+            --text-lightest: #94a3b8;
+            --pure-white: #ffffff;
+            --gradient-soft: linear-gradient(135deg, #fce7f3 0%, #dbeafe 50%, #e9d5ff 100%);
+            --gradient-mint: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            --gradient-peach: linear-gradient(135deg, #fed7aa 0%, #fdba74 100%);
+            --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.04);
+            --shadow-medium: 0 20px 60px rgba(0, 0, 0, 0.08);
+            --shadow-strong: 0 30px 80px rgba(0, 0, 0, 0.12);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--pure-white);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: var(--pure-white);
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: var(--gradient-soft);
+            border-radius: 50%;
+            opacity: 0.6;
+            blur: 40px;
+            animation: float-slow 25s infinite ease-in-out;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: var(--gradient-mint);
+            border-radius: 50%;
+            opacity: 0.4;
+            animation: float-slow 20s infinite ease-in-out reverse;
+        }
+
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .floating-dot {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: var(--accent-pink);
+            border-radius: 50%;
+            animation: float-gentle 15s infinite ease-in-out;
+        }
+
+        .floating-dot:nth-child(1) {
+            top: 20%;
+            left: 15%;
+            background: var(--accent-blue);
+            animation-delay: 0s;
+        }
+
+        .floating-dot:nth-child(2) {
+            top: 60%;
+            right: 25%;
+            background: var(--accent-purple);
+            animation-delay: -5s;
+        }
+
+        .floating-dot:nth-child(3) {
+            bottom: 30%;
+            left: 70%;
+            background: var(--accent-mint);
+            animation-delay: -10s;
+        }
+
+        .floating-dot:nth-child(4) {
+            top: 40%;
+            right: 40%;
+            background: var(--accent-peach);
+            animation-delay: -15s;
+        }
+
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0px) translateX(0px); }
+            33% { transform: translateY(-20px) translateX(10px); }
+            66% { transform: translateY(10px) translateX(-5px); }
+        }
+
+        @keyframes float-gentle {
+            0%, 100% { transform: translateY(0px) scale(1); opacity: 0.6; }
+            50% { transform: translateY(-30px) scale(1.2); opacity: 1; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            animation: fadeInUp 1.2s ease-out;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--accent-pink);
+            color: var(--text-medium);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(244, 63, 94, 0.1);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 600;
+            margin-bottom: 2rem;
+            line-height: 1.1;
+            color: var(--text-dark);
+            letter-spacing: -0.02em;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 2.5vw, 1.4rem);
+            font-weight: 400;
+            color: var(--text-medium);
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+
+        .cta-primary {
+            display: inline-block;
+            padding: 18px 40px;
+            background: var(--text-dark);
+            color: var(--pure-white);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 1.1rem;
+            box-shadow: var(--shadow-medium);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            margin-right: 1rem;
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-strong);
+            background: var(--text-medium);
+        }
+
+        .cta-secondary {
+            display: inline-block;
+            padding: 18px 40px;
+            background: transparent;
+            color: var(--text-medium);
+            text-decoration: none;
+            border: 2px solid var(--secondary-color);
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .cta-secondary:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 120px 0;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s ease-out;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: var(--accent-blue);
+            color: var(--text-medium);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Importance Section */
+        .importance {
+            background: var(--primary-color);
+        }
+
+        .importance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .importance-card {
+            background: var(--pure-white);
+            padding: 3rem 2.5rem;
+            border-radius: 24px;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.4s ease;
+            position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.02);
+        }
+
+        .importance-card:nth-child(1) {
+            background: linear-gradient(135deg, var(--pure-white) 0%, var(--accent-pink) 100%);
+        }
+
+        .importance-card:nth-child(2) {
+            background: linear-gradient(135deg, var(--pure-white) 0%, var(--accent-blue) 100%);
+        }
+
+        .importance-card:nth-child(3) {
+            background: linear-gradient(135deg, var(--pure-white) 0%, var(--accent-purple) 100%);
+        }
+
+        .importance-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .card-icon {
+            width: 70px;
+            height: 70px;
+            margin-bottom: 2rem;
+            background: var(--pure-white);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .card-description {
+            color: var(--text-medium);
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        /* Learning Section */
+        .learning {
+            background: var(--pure-white);
+        }
+
+        .learning-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            margin-top: 4rem;
+        }
+
+        .learning-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .learning-text p {
+            font-size: 1.1rem;
+            color: var(--text-medium);
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+        }
+
+        .learning-visual {
+            position: relative;
+            height: 500px;
+            background: var(--gradient-soft);
+            border-radius: 32px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .learning-visual::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200px;
+            height: 200px;
+            background: var(--pure-white);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.8;
+            animation: pulse-soft 3s infinite;
+        }
+
+        .learning-visual::after {
+            content: '🧠';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4rem;
+            z-index: 2;
+        }
+
+        @keyframes pulse-soft {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.05); }
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: var(--primary-color);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            background: var(--accent-mint);
+            transform: translateX(8px);
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--pure-white);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .feature-text {
+            color: var(--text-medium);
+            line-height: 1.6;
+        }
+
+        /* Stats Section */
+        .stats {
+            background: var(--secondary-color);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 3rem 2rem;
+            background: var(--pure-white);
+            border-radius: 24px;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-light);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Final CTA Section */
+        .final-cta {
+            background: var(--pure-white);
+            text-align: center;
+        }
+
+        .cta-container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 4rem 3rem;
+            background: var(--gradient-soft);
+            border-radius: 32px;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .cta-container h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .cta-container p {
+            font-size: 1.1rem;
+            color: var(--text-medium);
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+        }
+
+        .cta-final {
+            display: inline-block;
+            padding: 20px 50px;
+            background: var(--text-dark);
+            color: var(--pure-white);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow-medium);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-final:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .cta-final::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .cta-final:hover::before {
+            left: 100%;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .learning-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .importance-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .section {
+                padding: 80px 0;
+            }
+
+            .cta-primary, .cta-secondary {
+                display: block;
+                margin: 0.5rem 0;
+                text-align: center;
+            }
+
+            .cta-container {
+                padding: 3rem 2rem;
+                margin: 0 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 0 16px;
+            }
+
+            .importance-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .importance-card {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="floating-elements">
+            <div class="floating-dot"></div>
+            <div class="floating-dot"></div>
+            <div class="floating-dot"></div>
+            <div class="floating-dot"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">✨ The Future of Learning</div>
+                <h1>Master Generative AI with Personalized Excellence</h1>
+                <p class="hero-subtitle">Transform complex AI concepts into clear understanding through adaptive learning paths designed for your unique journey to expertise.</p>
+                <div style="margin-top: 2rem;">
+                   <a href="{{ url_for('LO.Learning') }}" class="cta-primary">Begin Your Journey</a>
+                    <!-- <a href="#features" class="cta-secondary">Explore Features</a> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Importance Section -->
+    <section class="section importance" id="learn-more">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Why Now</div>
+                <h2 class="section-title">The GenAI Revolution</h2>
+                <p class="section-subtitle">Artificial Intelligence is reshaping every industry, creating unprecedented opportunities for those who master its principles.</p>
+            </div>
+            
+            <div class="importance-grid">
+                <div class="importance-card">
+                    <div class="card-icon">🚀</div>
+                    <h3 class="card-title">Innovation Catalyst</h3>
+                    <p class="card-description">GenAI accelerates breakthrough innovations across industries, from creative content to complex problem-solving, enabling solutions at unprecedented speed and scale.</p>
+                </div>
+                
+                <div class="importance-card">
+                    <div class="card-icon">⚡</div>
+                    <h3 class="card-title">Productivity Revolution</h3>
+                    <p class="card-description">Automate complex workflows, generate high-quality content, and solve intricate problems faster than ever before, multiplying human capability exponentially.</p>
+                </div>
+                
+                <div class="importance-card">
+                    <div class="card-icon">🎯</div>
+                    <h3 class="card-title">Competitive Advantage</h3>
+                    <p class="card-description">Organizations and professionals leveraging GenAI gain significant advantages in efficiency, innovation, and market responsiveness over their competitors.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Section -->
+    <section class="section learning" id="features">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Learning Experience</div>
+                <h2 class="section-title">Personalized Mastery</h2>
+                <p class="section-subtitle">Our adaptive learning approach transforms complex theoretical concepts into clear, actionable understanding.</p>
+            </div>
+            
+            <div class="learning-content">
+                <div class="learning-text">
+                    <h3>Theory Made Beautiful</h3>
+                    <p>Experience AI concepts through elegant visualizations, interactive demonstrations, and step-by-step guidance that builds deep, lasting understanding.</p>
+                    
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <div class="feature-icon">🎨</div>
+                            <div class="feature-text">Interactive neural network visualizations with real-time feedback</div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">🔬</div>
+                            <div class="feature-text">Hands-on projects with industry-relevant case studies</div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">📊</div>
+                            <div class="feature-text">Adaptive difficulty with personalized progress tracking</div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">👥</div>
+                            <div class="feature-text">Expert mentorship and collaborative learning community</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="learning-visual"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section stats">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Impact Metrics</div>
+                <h2 class="section-title">Proven Results</h2>
+                <p class="section-subtitle">Join thousands of professionals who have transformed their careers through our personalized GenAI learning experience.</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">95%</span>
+                    <div class="stat-label">Course Completion</div>
+                </div>
+                
+                <div class="stat-item">
+                    <span class="stat-number">85%</span>
+                    <div class="stat-label">Productivity Boost</div>
+                </div>
+                
+                <div class="stat-item">
+                    <span class="stat-number">50+</span>
+                    <div class="stat-label">Industries Covered</div>
+                </div>
+                
+                <div class="stat-item">
+                    <span class="stat-number">10x</span>
+                    <div class="stat-label">Learning Efficiency</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="section final-cta">
+        <div class="container">
+            <div class="cta-container">
+                <h2>Ready to Lead the AI Revolution?</h2>
+                <p>Transform your understanding of Generative AI through personalized learning that adapts to your pace, style, and goals. Your future in AI starts today.</p>
+                 <a href="{{ url_for('LO.Learning') }}" class="cta-final">Start Your Journey</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -80px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Counter animation for stats
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 60;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                
+                const suffix = element.textContent.replace(/[\d]/g, '').trim();
+                element.textContent = Math.floor(current) + suffix;
+            }, 30);
+        }
+
+        // Animate counters when stats section is visible
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumbers = entry.target.querySelectorAll('.stat-number');
+                    statNumbers.forEach(stat => {
+                        const text = stat.textContent;
+                        const number = parseInt(text.replace(/[^\d]/g, ''));
+                        animateCounter(stat, number);
+                    });
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        const statsSection = document.querySelector('.stats');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        // Gentle parallax effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const elements = document.querySelectorAll('.floating-dot');
+            
+            elements.forEach((element, index) => {
+                const speed = (index + 1) * 0.2;
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Add subtle hover effects to cards
+        document.querySelectorAll('.importance-card, .stat-item').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

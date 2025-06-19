@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎉 Eco Hero Results! 🌟</title>
+    <style>
+       
+    </style>
+</head>
+<body>
+    <div class="bg-animation">
+        <!-- Celebration emojis -->
+        <div class="celebration-emoji" style="top: 10%; left: 5%; animation-delay: 0s;">🎉</div>
+        <div class="celebration-emoji" style="top: 20%; right: 10%; animation-delay: 1s;">🎊</div>
+        <div class="celebration-emoji" style="top: 30%; left: 15%; animation-delay: 2s;">🌟</div>
+        <div class="celebration-emoji" style="top: 40%; right: 20%; animation-delay: 0.5s;">✨</div>
+        <div class="celebration-emoji" style="bottom: 30%; left: 10%; animation-delay: 1.5s;">🎈</div>
+        <div class="celebration-emoji" style="bottom: 20%; right: 15%; animation-delay: 2.5s;">🌈</div>
+        
+        <!-- Fireworks -->
+        <div class="firework" style="top: 15%; left: 25%; background: #FFD700; animation-delay: 0s;"></div>
+        <div class="firework" style="top: 25%; right: 30%; background: #FF6347; animation-delay: 0.5s;"></div>
+        <div class="firework" style="top: 35%; left: 70%; background: #32CD32; animation-delay: 1s;"></div>
+        <div class="firework" style="bottom: 40%; left: 40%; background: #4169E1; animation-delay: 1.5s;"></div>
+    </div>
+
+    <div class="container">
+        <!-- Results Header -->
+        <div class="results-header">
+            <h1>🎉 Congratulations, Eco Hero! 🌟</h1>
+            <p style="font-size: 1.3em; color: #2E8B57; margin-bottom: 10px;">
+                You've completed your sustainability adventure!
+            </p>
+            <div class="final-score">
+                Final Score: {{ "%.2f"|format(score) }}
+            </div>
+            <p style="font-size: 1.1em; color: #228B22;">
+                🌍 Thank you for helping save our planet! 🌱
+            </p>
+        </div>
+
+        <!-- Statistics Grid -->
+        <div class="stats-grid">
+            <!-- Questions Breakdown -->
+            <div class="stat-card questions-breakdown">
+                <h3>
+                    📊 Questions Breakdown 📈
+                </h3>
+                <div class="difficulty-breakdown">
+                    <div class="difficulty-item difficulty-easy">
+                        <div class="difficulty-icon">🌱</div>
+                        <div class="difficulty-info">
+                            <div class="difficulty-label">Eco Sprout Level</div>
+                            <div style="color: #006400; font-size: 0.9em;">Easy Questions</div>
+                        </div>
+                        <div class="difficulty-count">{{ easy }}</div>
+                    </div>
+                    
+                    <div class="difficulty-item difficulty-medium">
+                        <div class="difficulty-icon">🌿</div>
+                        <div class="difficulty-info">
+                            <div class="difficulty-label">Green Guardian Level</div>
+                            <div style="color: #8B4513; font-size: 0.9em;">Medium Questions</div>
+                        </div>
+                        <div class="difficulty-count">{{ medium }}</div>
+                    </div>
+                    
+                    <div class="difficulty-item difficulty-hard">
+                        <div class="difficulty-icon">🌳</div>
+                        <div class="difficulty-info">
+                            <div class="difficulty-label">Eco Expert Level</div>
+                            <div style="color: #8B0000; font-size: 0.9em;">Hard Questions</div>
+                        </div>
+                        <div class="difficulty-count">{{ hard }}</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Probability Analysis -->
+            <div class="stat-card probability-analysis">
+                <h3>
+                    🧠 Your Learning Progress 📚
+                </h3>
+                <div class="probability-container">
+                    <div class="prob-item">
+                        <div class="prob-icon">🌱</div>
+                        <div class="prob-info">
+                            <div class="prob-label">Easy Questions Answering Probability</div>
+                            <div class="prob-bar-container">
+                                <div class="prob-bar easy" style="--width: {{ (pe * 100)|round }}%; width: {{ (pe * 100)|round }};">
+                                    <div class="prob-percentage">{{ (pe * 100)|round }}%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="prob-item">
+                        <div class="prob-icon">🌿</div>
+                        <div class="prob-info">
+                            <div class="prob-label">Medium Questions Answering Probability</div>
+                            <div class="prob-bar-container">
+                                <div class="prob-bar medium" style="--width: {{ (pm * 100)|round }}%; width: {{ (pm * 100)|round }}%;">
+                                    <div class="prob-percentage">{{ (pm * 100)|round }}%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="prob-item">
+                        <div class="prob-icon">🌳</div>
+                        <div class="prob-info">
+                            <div class="prob-label">Hard Questions Answering Probability</div>
+                            <div class="prob-bar-container">
+                                <div class="prob-bar hard" style="--width: {{ (ph * 100)|round }}%; width: {{ (ph * 100)|round }}%;">
+                                    <div class="prob-percentage">{{ (ph * 100)|round }}%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Performance Badge -->
+        <div class="performance-badge">
+            {% if score >= 0.8 %}
+                <div class="badge badge-excellent">
+                    🏆 Eco Champion! 🌟
+                </div>
+                <p style="font-size: 1.2em; color: #228B22; margin-top: 15px;">
+                    Outstanding! You're a true environmental hero! 🦸‍♀️🌍
+                </p>
+            {% elif score >= 0.6 %}
+                <div class="badge badge-great">
+                    🎖️ Green Warrior! 🌿
+                </div>
+                <p style="font-size: 1.2em; color: #228B22; margin-top: 15px;">
+                    Great job! You're well on your way to saving the planet! 🌱✨
+                </p>
+            {% elif score >= 0.4 %}
+                <div class="badge badge-good">
+                    🌟 Eco Explorer! 🔍
+                </div>
+                <p style="font-size: 1.2em; color: #4169E1; margin-top: 15px;">
+                    Good effort! Keep learning about our amazing planet! 🌎📚
+                </p>
+            {% else %}
+                <div class="badge badge-try-again">
+                    🌱 Future Eco Hero! 💪
+                </div>
+                <p style="font-size: 1.2em; color: #DC143C; margin-top: 15px;">
+                    Don't give up! Every expert was once a beginner! 🚀🌟
+                </p>
+            {% endif %}
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <a href="{{ url_for('quiz.quiz') }}" class="btn btn-primary">
+                <span style="position: relative; z-index: 1;">
+                    🔄 Take Quiz Again 🌍
+                </span>
+            </a>
+            <a href="#" class="btn btn-secondary" onclick="shareResults()">
+                <span style="position: relative; z-index: 1;">
+                    📱 Share Results 🎉
+                </span>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Create floating emojis
+        function createFloatingEmoji() {
+            const emojis = ['🌟', '✨', '🌱', '🌍', '💚', '♻️', '🎉', '🎊'];
+            const emoji = document.createElement('div');
+            emoji.className = 'floating-emoji';
+            emoji.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+            emoji.style.left = Math.random() * 100 + 'vw';
+            emoji.style.top = Math.random() * 100 + 'vh';
+            emoji.style.fontSize = (Math.random() * 20 + 20) + 'px';
+            emoji.style.animationDuration = (Math.random() * 4 + 4) + 's';
+            emoji.style.animationDelay = Math.random() * 2 + 's';
+            
+            document.body.appendChild(emoji);
+            
+            setTimeout(() => {
+                if (emoji.parentNode) {
+                    emoji.parentNode.removeChild(emoji);
+                }
+            }, 8000);
+        }
+
+        // Create floating emojis periodically
+        setInterval(createFloatingEmoji, 1500);
+
+        // Share results function
+        function shareResults() {
+            const score = {{ "%.2f"|format(score) }};
+            const text = `🎉 I just completed the Eco Heroes Quiz and scored ${score}! 🌍 Join me in learning about sustainability! 🌱 #EcoHero #Sustainability`;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Eco Heroes Quiz Results',
+                    text: text,
+                    url: window.location.href
+                });
+            } else {
+                // Fallback - copy to clipboard
+                navigator.clipboard.writeText(text).then(() => {
+                    alert('🎉 Results copied to clipboard! Share with your friends! 🌟');
+                });
+            }
+        }
+
+        // Add confetti burst effect
+        function createConfettiBurst() {
+            const colors = ['#FFD700', '#FF6347', '#32CD32', '#4169E1', '#FF69B4'];
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.style.position = 'fixed';
+                    confetti.style.width = '10px';
+                    confetti.style.height = '10px';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.left = '50%';
+                    confetti.style.top = '20%';
+                    confetti.style.borderRadius = '50%';
+                    confetti.style.pointerEvents = 'none';
+                    confetti.style.zIndex = '1000';
+                    
+                    const angle = (Math.PI * 2 * i) / 30;
+                    const velocity = 100 + Math.random() * 100;
+                    const vx = Math.cos(angle) * velocity;
+                    const vy = Math.sin(angle) * velocity;
+                    
+                    confetti.style.animation = `confettiFall 3s ease-out forwards`;
+                    confetti.style.setProperty('--vx', vx + 'px');
+                    confetti.style.setProperty('--vy', vy + 'px');
+                    
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => {
+                        if (confetti.parentNode) {
+                            confetti.parentNode.removeChild(confetti);
+                        }
+                    }, 3000);
+                }, i * 50);
+            }
+        }
+
+        // Add confetti animation
+        const confettiStyle = document.createElement('style');
+        confettiStyle.textContent = `
+            @keyframes confettiFall {
+                0% {
+                    transform: translate(0, 0) rotate(0deg);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translate(var(--vx), calc(var(--vy) + 400px)) rotate(720deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(confettiStyle);
+
+        // Trigger confetti on page load
+        window.addEventListener('load', () => {
+            setTimeout(createConfettiBurst, 1000);
+        });
+
+        // Add sound effects (optional - can be enabled if audio files are available)
+        function playSound(type) {
+            // This would play different sounds based on the score
+            // You can add audio files and uncomment this section
+            /*
+            const audio = new Audio(`sounds/${type}.mp3`);
+            audio.play().catch(e => console.log('Audio not supported'));
+            */
+        }
+
+        // Animate counters on scroll
+        function animateCounters() {
+            const counters = document.querySelectorAll('.difficulty-count');
+            counters.forEach(counter => {
+                const target = parseInt(counter.textContent);
+                let current = 0;
+                const increment = target / 30;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        counter.textContent = target;
+                        clearInterval(timer);
+                    } else {
+                        counter.textContent = Math.floor(current);
+                    }
+                }, 50);
+            });
+        }
+
+        // Start counter animation when page loads
+        window.addEventListener('load', () => {
+            setTimeout(animateCounters, 1500);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f4f6f8;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.user-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+
+.logout {
+    text-decoration: none;
+    color: #e91e63;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    color: #777;
+    margin-bottom: 20px;
+}
+
+.dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.chart-container {
+    flex: 2;
+    min-width: 300px;
+}
+
+.summary-cards {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.card {
+    background: #f9fafb;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.card h2 {
+    margin: 0;
+    color: #333;
+}
+
+.card p {
+    margin: 5px 0 0;
+    color: #666;
+    font-size: 0.95em;
+}
+
+.progress-indicator {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.circle-wrap {
+    width: 150px;
+    height: 150px;
+    background: #f2f2f2;
+    border-radius: 50%;
+    margin: 20px auto;
+    position: relative;
+}
+
+.circle .mask, .circle .fill {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.circle .mask {
+    clip: rect(0px, 150px, 150px, 75px);
+}
+
+.circle .mask.full, .circle .fill {
+    clip: rect(0px, 75px, 150px, 0px);
+    background-color: #4caf50;
+}
+
+.inside-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: #fff;
+    line-height: 120px;
+    text-align: center;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.navigation {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.navigation a {
+    padding: 10px 20px;
+    background-color: #2196f3;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+.navigation a:hover {
+    background-color: #1976d2;
+}
+
+@media screen and (max-width: 768px) {
+    .dashboard {
+        flex-direction: column;
+    }
+
+    .summary-cards {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .card {
+        flex: 1 1 45%;
+    }
+}

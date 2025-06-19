@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Sustainability Lesson Plan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100vw;
+            min-height: 100vh;
+            background: #fff;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navigation Bar */
+        header {
+            background: #fff;
+            padding: 15px 40px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-container svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        .logo-container .logo-text {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #2d4a2b;
+        }
+
+        .login-btn {
+        display: inline-block;
+        background: #81ec7a;
+        color: white;
+        padding: 8px 20px;
+        border-radius: 20px;
+        text-decoration: none;
+        font-weight: 500;
+        border: 2px solid transparent;
+        transition: 
+            transform 0.2s ease, 
+            background 0.2s ease, 
+            box-shadow 0.3s ease, 
+            border 0.3s ease;
+    }
+
+    .login-btn:hover {
+        transform: scale(1.1);
+        border: 2px solid #4cf04c; /* Light green border */
+        box-shadow: 0 0 10px #a6f4a6, 0 0 20px #a6f4a6; /* Light green glow */
+    }
+
+
+        /* Hero Section with Tree Image Background */
+        .hero {
+            height: 100vh; /* Updated to full viewport height */
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: url('https://img.freepik.com/premium-vector/majestic-big-tree-growing-from-seed_1322206-21072.jpg') no-repeat center;
+            background-size: cover;
+            background-position: center top; /* Focus on the tree */
+        }
+
+        /* Sustainability Section with Adjusted Spacing */
+        .sustainability-section {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(5px);
+            border-radius: 15px;
+            max-width: 1000px; /* Increased max-width for larger screens */
+            margin: 0 auto;
+        }
+
+        .sustainability-section h2 {
+            font-size: 2.5rem; /* Slightly larger for taller section */
+            font-weight: 600;
+            color: #2d4a2b;
+            margin-bottom: 25px;
+        }
+
+        .sustainability-section p {
+            color: #333;
+            font-size: 1.1rem; /* Slightly larger for readability */
+            line-height: 1.6;
+            margin-bottom: 25px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .sustainability-points {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .sustainability-point {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+            text-align: left;
+        }
+
+        .sustainability-point h3 {
+            font-size: 1.3rem; /* Slightly larger */
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 12px;
+        }
+
+        .sustainability-point p {
+            font-size: 0.95rem; /* Slightly larger */
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* Sustainable Lesson Plan Section */
+        .lesson-plan-section {
+            padding: 40px 20px;
+            text-align: center;
+            width: 100%;
+            background: #fff;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .lesson-plan-section h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #2d4a2b;
+            margin-bottom: 20px;
+        }
+
+        .lesson-plan-section p {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto 20px;
+        }
+
+        /* Start Now Section */
+        .start-now-section {
+            padding: 40px 20px;
+            text-align: center;
+            width: 100%;
+            background: #fff;
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cta-button {
+            background: #2d4a2b;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background: #1f3a1d;
+        }
+
+        /* Falling Leaves Animation */
+        .falling-leaf {
+            position: fixed;
+            width: 25px;
+            height: 25px;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .leaf-1 {
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23228B22"><path d="M12 2C8 2 5 5 5 9c0 2 1 4 2 5l5 6 5-6c1-1 2-3 2-5 0-4-3-7-7-7z"/></svg>') no-repeat center;
+            background-size: contain;
+            left: 10%;
+            animation: fall-1 4s linear infinite;
+        }
+
+        .leaf-2 {
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23556B2F"><path d="M12 2C8 2 5 5 5 9c0 2 1 4 2 5l5 6 5-6c1-1 2-3 2-5 0-4-3-7-7-7z"/></svg>') no-repeat center;
+            background-size: contain;
+            left: 25%;
+            animation: fall-2 5s linear infinite;
+            animation-delay: 1s;
+        }
+
+        .leaf-3 {
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%238FBC8F"><path d="M12 2C8 2 5 5 5 9c0 2 1 4 2 5l5 6 5-6c1-1 2-3 2-5 0-4-3-7-7-7z"/></svg>') no-repeat center;
+            background-size: contain;
+            left: 70%;
+            animation: fall-3 4.5s linear infinite;
+            animation-delay: 2s;
+        }
+
+        .leaf-4 {
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%239ACD32"><path d="M12 2C8 2 5 5 5 9c0 2 1 4 2 5l5 6 5-6c1-1 2-3 2-5 0-4-3-7-7-7z"/></svg>') no-repeat center;
+            background-size: contain;
+            left: 85%;
+            animation: fall-4 3.5s linear infinite;
+            animation-delay: 0.5s;
+        }
+
+        .leaf-5 {
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23228B22"><path d="M12 2C8 2 5 5 5 9c0 2 1 4 2 5l5 6 5-6c1-1 2-3 2-5 0-4-3-7-7-7z"/></svg>') no-repeat center;
+            background-size: contain;
+            left: 50%;
+            animation: fall-5 4.2s linear infinite;
+            animation-delay: 3s;
+        }
+
+        @keyframes fall-1 {
+            0% {
+                top: -50px;
+                transform: rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                top: 100vh;
+                transform: rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes fall-2 {
+            0% {
+                top: -50px;
+                transform: rotate(0deg) translateX(0);
+                opacity: 1;
+            }
+            50% {
+                transform: rotate(180deg) translateX(20px);
+            }
+            100% {
+                top: 100vh;
+                transform: rotate(360deg) translateX(0);
+                opacity: 0;
+            }
+        }
+
+        @keyframes fall-3 {
+            0% {
+                top: -50px;
+                transform: rotate(0deg) translateX(0);
+                opacity: 1;
+            }
+            30% {
+                transform: rotate(120deg) translateX(-15px);
+            }
+            70% {
+                transform: rotate(240deg) translateX(15px);
+            }
+            100% {
+                top: 100vh;
+                transform: rotate(360deg) translateX(0);
+                opacity: 0;
+            }
+        }
+
+        @keyframes fall-4 {
+            0% {
+                top: -50px;
+                transform: rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                top: 100vh;
+                transform: rotate(-360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes fall-5 {
+            0% {
+                top: -50px;
+                transform: rotate(0deg) translateX(0);
+                opacity: 1;
+            }
+            25% {
+                transform: rotate(90deg) translateX(10px);
+            }
+            75% {
+                transform: rotate(270deg) translateX(-10px);
+            }
+            100% {
+                top: 100vh;
+                transform: rotate(360deg) translateX(0);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                padding: 10px 15px;
+            }
+
+            .nav-links {
+                gap: 10px;
+            }
+
+            .nav-links a {
+                font-size: 0.7rem;
+            }
+
+            .logo-container .logo-text {
+                font-size: 1.1rem;
+            }
+
+            .logo-container svg {
+                width: 25px;
+                height: 25px;
+            }
+
+            .login-btn {
+                padding: 6px 15px;
+                font-size: 0.7rem;
+            }
+
+            .hero {
+                height: 80vh; /* Reduced height for mobile to avoid excessive scrolling */
+            }
+
+            .sustainability-section {
+                padding: 15px;
+                max-width: 90%; /* Adjusted for mobile */
+            }
+
+            .sustainability-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .sustainability-section p {
+                font-size: 0.9rem;
+            }
+
+            .sustainability-points {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .sustainability-point {
+                max-width: 100%;
+                min-width: 200px;
+                padding: 15px;
+            }
+
+            .sustainability-point h3 {
+                font-size: 1rem;
+            }
+
+            .sustainability-point p {
+                font-size: 0.8rem;
+            }
+
+            .lesson-plan-section {
+                padding: 30px 15px;
+            }
+
+            .lesson-plan-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .lesson-plan-section p {
+                font-size: 0.9rem;
+            }
+
+            .start-now-section {
+                padding: 30px 15px;
+            }
+
+            .cta-button {
+                padding: 8px 18px;
+                font-size: 0.8rem;
+            }
+
+            .falling-leaf {
+                width: 15px;
+                height: 15px;
+            }
+        }
+
+        /* Extra Small Screens (below 480px) */
+        @media (max-width: 480px) {
+            header {
+                flex-direction: column;
+                gap: 10px;
+                padding: 10px;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 8px;
+                align-items: center;
+            }
+
+            .nav-links a {
+                font-size: 0.8rem;
+            }
+
+            .login-btn {
+                padding: 5px 12px;
+                font-size: 0.8rem;
+            }
+
+            .hero {
+                height: 70vh; /* Slightly smaller for very small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <svg viewBox="0 0 24 24" fill="#2d4a2b">
+                    <path d="M12,2A3,3 0 0,1 15,5V11A3,3 0 0,1 12,14A3,3 0 0,1 9,11V5A3,3 0 0,1 12,2M19,11C19,14.53 16.39,17.44 13,17.93V21H11V17.93C7.61,17.44 5,11H7A5,5 0 0,0 12,16A5,5 0 0,0 17,11H19Z"/>
+                </svg>
+                <span class="logo-text">My Sustainability Lesson Plan</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#lesson-plans">Lesson Plans</a></li>
+                <li><a href="#guides">Guides</a></li>
+                <!-- <li><a href="{{ url_for('auth.login') }}" class="login-btn">Login/Signup</a></li> -->
+            </ul>
+        </header>
+
+        <!-- Hero Section with Tree Image and Sustainability Section -->
+        <section class="hero">
+            <div class="sustainability-section">
+                <h2>Why Sustainability Matters</h2>
+                <p>Sustainability is about meeting our needs today without compromising the ability of future generations to meet theirs. By integrating sustainable practices into education, we empower students to become stewards of the environment and make a positive impact on the planet.</p>
+                <div class="sustainability-points">
+                    <div class="sustainability-point">
+                        <h3>Produce Wastir</h3>
+                        <p>Teach students to minimize waste by reusing materials and recycling, fostering a culture of resourcefulness.</p>
+                    </div>
+                    <div class="sustainability-point">
+                        <h3>Daogene Efirepy</h3>
+                        <p>Encourage energy-saving habits like turning off lights and using renewable energy sources in projects.</p>
+                    </div>
+                    <div class="sustainability-point">
+                        <h3>Pitolect Secigoborthe</h3>
+                        <p>Educate about the importance of preserving biodiversity through hands-on activities like planting trees.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sustainable Lesson Plan Section -->
+        <section class="lesson-plan-section">
+            <h2>Sustainable Lesson Plans</h2>
+            <p>Our sustainable lesson plans are designed to integrate environmental awareness into everyday learning. From hands-on activities like creating recycled art to exploring renewable energy through interactive experiments, these plans help students understand the importance of sustainability while fostering critical thinking and creativity.</p>
+        </section>
+
+        <!-- Start Now Section -->
+        <section class="start-now-section">
+            <a href="{{ url_for('LO.Learning') }}"  class="cta-button">Start Now</a>
+            <!-- <a href="{{ url_for('auth.login') }}" class="login-btn">Login/Signup</a> -->
+
+        </section>
+
+        <!-- Falling Leaves -->
+        <div class="falling-leaf leaf-1"></div>
+        <div class="falling-leaf leaf-2"></div>
+        <div class="falling-leaf leaf-3"></div>
+        <div class="falling-leaf leaf-4"></div>
+        <div class="falling-leaf leaf-5"></div>
+    </div>
+</body>
+</html>

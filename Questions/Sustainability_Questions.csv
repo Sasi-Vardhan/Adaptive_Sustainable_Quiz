@@ -1,0 +1,121 @@
+id,learningOutcome,bloomsLevel,question,option1,option2,option3,option4,correctAnswer,level
+1,LO1,Remembering,What is the term for the ability to maintain or preserve resources for future generations?,Sustainability,Conservation,Preservation,Restoration,Sustainability,Easy
+2,LO1,Remembering,Which gas is most responsible for the greenhouse effect?,Carbon dioxide,Methane,Ozone,Nitrous oxide,Carbon dioxide,Easy
+3,LO1,Remembering,What is the primary source of renewable energy from the sun?,Solar energy,Wind energy,Hydropower,Geothermal energy,Solar energy,Easy
+4,LO1,Remembering,What does the acronym IPCC stand for in the context of climate change?,International Panel on Climate Change,Intergovernmental Panel on Climate Change,International Protocol on Carbon Conservation,Intercontinental Program for Climate Control,Intergovernmental Panel on Climate Change,Easy
+5,LO1,Remembering,Which resource is considered non-renewable?,Coal,Solar energy,Wind energy,Hydropower,Coal,Easy
+6,LO1,Remembering,What is the term for the variety of life on Earth?,Biodiversity,Ecosystem,Habitat,Biome,Biodiversity,Easy
+7,LO1,Remembering,Which international agreement aims to limit global warming to below 2°C?,Kyoto Protocol,Paris Agreement,Montreal Protocol,Copenhagen Accord,Paris Agreement,Easy
+8,LO1,Remembering,What is the main goal of recycling?,Reduce waste,Increase production,Enhance consumption,Decrease innovation,Reduce waste,Easy
+9,LO1,Remembering,What is the primary cause of deforestation?,Urbanization,Agriculture expansion,Renewable energy projects,Water conservation,Agriculture expansion,Medium
+10,LO1,Remembering,Which material is most commonly recycled globally?,Paper,Glass,Plastic,Aluminum,Aluminum,Medium
+11,LO1,Remembering,What is the term for the process of converting waste into reusable material?,Recycling,Composting,Incineration,Landfilling,Recycling,Medium
+12,LO1,Remembering,Which renewable energy source relies on the movement of water?,Hydropower,Solar energy,Wind energy,Biomass,Hydropower,Medium
+13,LO1,Remembering,What is the main source of marine pollution?,Oil spills,Plastic waste,Sewage discharge,Heavy metals,Plastic waste,Medium
+14,LO1,Remembering,Which organization promotes sustainable development globally?,UNEP,UNESCO,WHO,IMF,UNEP,Medium
+15,LO1,Remembering,What is the term for energy derived from organic material?,Biomass,Solar energy,Geothermal energy,Nuclear energy,Biomass,Medium
+16,LO1,Remembering,Which gas is a major contributor to acid rain?,Sulfur dioxide,Carbon monoxide,Ozone,Methane,Sulfur dioxide,Medium
+17,LO1,Remembering,What is the primary purpose of a carbon footprint?,Measure emissions,Track biodiversity,Monitor water usage,Assess soil quality,Measure emissions,Hard
+18,LO1,Remembering,Which protocol phased out ozone-depleting substances?,Montreal Protocol,Kyoto Protocol,Paris Agreement,Copenhagen Accord,Montreal Protocol,Hard
+19,LO1,Remembering,What is the term for the loss of fertile land due to environmental factors?,Desertification,Deforestation,Urbanization,Salinization,Desertification,Hard
+20,LO1,Remembering,Which type of pollution is caused by excessive noise?,Noise pollution,Air pollution,Thermal pollution,Light pollution,Noise pollution,Hard
+21,LO1,Remembering,What is the name of the global goals set by the UN for sustainable development?,Millennium Development Goals,Sustainable Development Goals,Global Sustainability Targets,Environmental Protection Goals,Sustainable Development Goals,Hard
+22,LO1,Remembering,Which energy source is derived from Earth's internal heat?,Geothermal energy,Solar energy,Hydropower,Biomass,Geothermal energy,Hard
+23,LO1,Remembering,What is the term for the practice of reducing energy consumption?,Energy conservation,Energy generation,Energy storage,Energy distribution,Energy conservation,Hard
+24,LO1,Remembering,Which type of farming promotes soil health and biodiversity?,Organic farming,Industrial farming,Monoculture farming,Hydroponic farming,Organic farming,Hard
+25,LO2,Understanding,Why is reducing carbon emissions critical for sustainability?,It reduces global warming,It increases energy production,It enhances soil fertility,It promotes urbanization,It reduces global warming,Easy
+26,LO2,Understanding,What is the primary benefit of using renewable energy sources?,They are inexhaustible,They are cheaper,They produce more emissions,They require less maintenance,They are inexhaustible,Easy
+27,LO2,Understanding,How does recycling contribute to sustainability?,Reduces waste in landfills,Increases resource extraction,Promotes deforestation,Enhances pollution,Reduces waste in landfills,Easy
+28,LO2,Understanding,What is the role of biodiversity in sustainable ecosystems?,Maintains ecosystem balance,Increases pollution,Reduces soil quality,Promotes desertification,Maintains ecosystem balance,Easy
+29,LO2,Understanding,Why is water conservation important for sustainability?,Prevents water scarcity,Increases water pollution,Reduces biodiversity,Promotes urbanization,Prevents water scarcity,Easy
+30,LO2,Understanding,What does the term "carbon neutral" mean?,Zero net carbon emissions,High carbon emissions,Low water usage,No energy consumption,Zero net carbon emissions,Easy
+31,LO2,Understanding,How does deforestation impact sustainability?,Reduces carbon sequestration,Increases renewable energy,Enhances water quality,Promotes biodiversity,Reduces carbon sequestration,Easy
+32,LO2,Understanding,What is the purpose of the Paris Agreement?,Limit global temperature rise,Promote fossil fuel use,Increase deforestation,Reduce biodiversity,Limit global temperature rise,Easy
+33,LO2,Understanding,How does composting benefit sustainable waste management?,Reduces landfill waste,Increases air pollution,Promotes plastic use,Decreases soil fertility,Reduces landfill waste,Medium
+34,LO2,Understanding,Why is sustainable agriculture important?,Preserves soil health,Increases pesticide use,Promotes monoculture,Reduces crop yields,Preserves soil health,Medium
+35,LO2,Understanding,What is the impact of overfishing on sustainability?,Depletes marine ecosystems,Increases fish populations,Reduces water pollution,Promotes coral growth,Depletes marine ecosystems,Medium
+36,LO2,Understanding,How does urbanization affect sustainability?,Increases resource consumption,Reduces energy use,Enhances biodiversity,Decreases pollution,Increases resource consumption,Medium
+37,LO2,Understanding,Why is renewable energy considered sustainable?,It reduces environmental harm,It is non-renewable,It increases emissions,It promotes deforestation,It reduces environmental harm,Medium
+38,LO2,Understanding,What is the significance of the circular economy?,Minimizes waste,Maximizes resource extraction,Increases pollution,Promotes single-use products,Minimizes waste,Medium
+39,LO2,Understanding,How does air pollution impact sustainability?,Harms ecosystems,Improves air quality,Increases biodiversity,Promotes renewable energy,Harms ecosystems,Medium
+40,LO2,Understanding,What is the role of green buildings in sustainability?,Reduce energy consumption,Increase emissions,Promote deforestation,Decrease water quality,Reduce energy consumption,Medium
+41,LO2,Understanding,Why does overpopulation challenge sustainability?,Strains resources,Reduces consumption,Increases biodiversity,Promotes renewable energy,Strains resources,Hard
+42,LO2,Understanding,How does ocean acidification affect sustainability?,Harms marine life,Increases fish populations,Improves water quality,Reduces emissions,Harms marine life,Hard
+43,LO2,Understanding,What is the environmental impact of single-use plastics?,Increases pollution,Reduces waste,Enhances biodiversity,Promotes recycling,Increases pollution,Hard
+44,LO2,Understanding,Why is soil degradation a threat to sustainability?,Reduces food security,Increases crop yields,Promotes biodiversity,Decreases pollution,Reduces food security,Hard
+45,LO2,Understanding,How does renewable energy reduce dependency on fossil fuels?,Provides cleaner alternatives,Increases emissions,Promotes deforestation,Reduces water quality,Provides cleaner alternatives,Hard
+46,LO2,Understanding,What is the role of carbon offsets in sustainability?,Balance emissions,Increase pollution,Reduce biodiversity,Promote urbanization,Balance emissions,Hard
+47,LO2,Understanding,Why is sustainable forestry important?,Prevents habitat loss,Increases deforestation,Reduces biodiversity,Promotes pollution,Prevents habitat loss,Hard
+48,LO2,Understanding,How does climate change affect sustainable development?,Disrupts ecosystems,Increases renewable energy,Reduces pollution,Promotes urbanization,Disrupts ecosystems,Hard
+49,LO3,Applying,How would you implement a recycling program in a small community?,Set up collection points,Increase landfill use,Promote single-use plastics,Reduce waste sorting,Set up collection points,Easy
+50,LO3,Applying,What step can a household take to reduce energy consumption?,Use LED bulbs,Increase appliance use,Leave lights on,Use incandescent bulbs,Use LED bulbs,Easy
+51,LO3,Applying,Which action can a company take to reduce its carbon footprint?,Use renewable energy,Increase fossil fuel use,Reduce recycling,Promote deforestation,Use renewable energy,Easy
+52,LO3,Applying,How can an individual reduce water waste?,Fix leaks promptly,Increase irrigation,Leave taps running,Use high-flow fixtures,Fix leaks promptly,Easy
+53,LO3,Applying,What is a practical way to promote sustainable transportation?,Use public transit,Increase car usage,Reduce bike lanes,Promote air travel,Use public transit,Easy
+54,LO3,Applying,How can a school promote sustainability among students?,Host recycling drives,Increase waste,Reduce green spaces,Promote single-use items,Host recycling drives,Easy
+55,LO3,Applying,What can a farmer do to practice sustainable agriculture?,Use organic fertilizers,Increase pesticides,Promote monoculture,Reduce crop rotation,Use organic fertilizers,Easy
+56,LO3,Applying,How can a city reduce air pollution?,Promote electric vehicles,Increase coal plants,Reduce public transit,Promote deforestation,Promote electric vehicles,Easy
+57,LO3,Applying,What is a practical way to reduce plastic waste in a workplace?,Use reusable containers,Increase single-use plastics,Reduce recycling bins,Promote bottled water,Use reusable containers,Medium
+58,LO3,Applying,How can a community reduce deforestation?,Plant native trees,Increase logging,Reduce green spaces,Promote urbanization,Plant native trees,Medium
+59,LO3,Applying,What action can a business take to support sustainable supply chains?,Source local materials,Increase imports,Reduce transparency,Promote waste,Source local materials,Medium
+60,LO3,Applying,How can a household reduce its carbon emissions?,Install solar panels,Increase coal use,Reduce insulation,Promote gas heating,Install solar panels,Medium
+61,LO3,Applying,What can a city do to improve sustainable waste management?,Expand composting programs,Increase landfilling,Reduce recycling,Promote incineration,Expand composting programs,Medium
+62,LO3,Applying,How can a school reduce energy waste?,Use motion-sensor lights,Increase heating,Reduce insulation,Promote coal energy,Use motion-sensor lights,Medium
+63,LO3,Applying,What is a way to promote sustainable fishing?,Enforce catch limits,Increase overfishing,Reduce marine reserves,Promote bottom trawling,Enforce catch limits,Medium
+64,LO3,Applying,How can an individual support biodiversity?,Plant pollinator gardens,Use pesticides,Reduce green spaces,Promote monoculture,Plant pollinator gardens,Medium
+65,LO3,Applying,How can a factory reduce water pollution?,Treat wastewater,Increase runoff,Reduce filtration,Promote chemical dumping,Treat wastewater,Hard
+66,LO3,Applying,What can a government do to promote renewable energy adoption?,Offer tax incentives,Increase fossil fuel subsidies,Reduce solar funding,Promote coal plants,Offer tax incentives,Hard
+67,LO3,Applying,How can a community address soil degradation?,Use cover crops,Increase chemical fertilizers,Promote monoculture,Reduce crop rotation,Use cover crops,Hard
+68,LO3,Applying,What is a strategy to reduce urban heat islands?,Increase green roofs,Promote asphalt,Reduce tree cover,Increase concrete,Increase green roofs,Hard
+69,LO3,Applying,How can a business improve energy efficiency?,Conduct energy audits,Increase energy waste,Reduce insulation,Promote old appliances,Conduct energy audits,Hard
+70,LO3,Applying,What can a city do to protect local ecosystems?,Create wildlife corridors,Increase urban sprawl,Reduce green spaces,Promote pollution,Create wildlife corridors,Hard
+71,LO3,Applying,How can a school reduce its environmental impact?,Use digital textbooks,Increase paper use,Reduce recycling,Promote single-use items,Use digital textbooks,Hard
+72,LO3,Applying,What is a way to promote sustainable tourism?,Encourage eco-friendly tours,Increase mass tourism,Reduce conservation,Promote deforestation,Encourage eco-friendly tours,Hard
+73,LO4,Analyzing,What is the primary cause of increased greenhouse gas emissions in urban areas?,Transportation,Deforestation,Agriculture,Recycling,Transportation,Easy
+74,LO4,Analyzing,Which factor contributes most to ocean pollution?,Plastic waste,Renewable energy,Organic farming,Water conservation,Plastic waste,Easy
+75,LO4,Analyzing,What is the main driver of biodiversity loss?,Habitat destruction,Renewable energy,Recycling,Composting,Habitat destruction,Easy
+76,LO4,Analyzing,Which activity has the largest impact on deforestation?,Logging,Recycling,Solar energy,Water conservation,Logging,Easy
+77,LO4,Analyzing,What is the primary source of air pollution in industrial areas?,Factory emissions,Public transit,Organic farming,Renewable energy,Factory emissions,Easy
+78,LO4,Analyzing,Which practice most contributes to soil degradation?,Overfarming,Recycling,Composting,Urbanization,Overfarming,Easy
+79,LO4,Analyzing,What is the main cause of water scarcity?,Overuse,Renewable energy,Recycling,Deforestation,Overuse,Easy
+80,LO4,Analyzing,Which sector contributes most to global carbon emissions?,Energy production,Recycling,Composting,Water conservation,Energy production,Easy
+81,LO4,Analyzing,What is the relationship between urbanization and resource consumption?,Increases consumption,Decreases consumption,No impact,Reduces emissions,Increases consumption,Medium
+82,LO4,Analyzing,How does overfishing affect marine food chains?,Disrupts balance,Improves stability,Increases biodiversity,No impact,Disrupts balance,Medium
+83,LO4,Analyzing,What is the impact of single-use plastics on waste management?,Increases landfill waste,Reduces waste,Improves recycling,No impact,Increases landfill waste,Medium
+84,LO4,Analyzing,How does deforestation affect carbon sequestration?,Reduces it,Increases it,No impact,Improves soil quality,Reduces it,Medium
+85,LO4,Analyzing,What is the connection between renewable energy and emissions?,Reduces emissions,Increases emissions,No impact,Promotes deforestation,Reduces emissions,Medium
+86,LO4,Analyzing,How does soil erosion impact sustainable agriculture?,Reduces productivity,Increases yields,No impact,Improves biodiversity,Reduces productivity,Medium
+87,LO4,Analyzing,What is the effect of air pollution on ecosystems?,Harms biodiversity,Increases biodiversity,No impact,Improves soil quality,Harms biodiversity,Medium
+88,LO4,Analyzing,How does water pollution affect sustainability?,Reduces water quality,Increases water quality,No impact,Promotes biodiversity,Reduces water quality,Medium
+89,LO4,Analyzing,What is the long-term impact of climate change on coastal ecosystems?,Increased flooding,Improved stability,Increased biodiversity,No impact,Increased flooding,Hard
+90,LO4,Analyzing,How does overpopulation affect resource sustainability?,Increases strain,Reduces strain,Improves efficiency,No impact,Increases strain,Hard
+91,LO4,Analyzing,What is the relationship between fossil fuel use and global warming?,Increases warming,Reduces warming,Improves biodiversity,No impact,Increases warming,Hard
+92,LO4,Analyzing,How does sustainable forestry impact biodiversity?,Preserves it,Reduces it,Increases pollution,No impact,Preserves it,Hard
+93,LO4,Analyzing,What is the effect of urbanization on water cycles?,Disrupts them,Improves them,Increases biodiversity,No impact,Disrupts them,Hard
+94,LO4,Analyzing,How does ocean acidification affect coral reefs?,Causes bleaching,Improves growth,Increases biodiversity,No impact,Causes bleaching,Hard
+95,LO4,Analyzing,What is the impact of renewable energy adoption on fossil fuel dependency?,Reduces it,Increases it,Improves biodiversity,No impact,Reduces it,Hard
+96,LO4,Analyzing,How does waste mismanagement affect sustainability?,Increases pollution,Reduces pollution,Improves biodiversity,No impact,Increases pollution,Hard
+97,LO5,Evaluating,Which is the most effective strategy for reducing carbon emissions?,Using renewable energy,Increasing coal use,Promoting deforestation,Reducing recycling,Using renewable energy,Easy
+98,LO5,Evaluating,Which practice is most sustainable for waste management?,Composting,Landfilling,Incineration,Single-use plastics,Composting,Easy
+99,LO5,Evaluating,Which energy source is most sustainable?,Solar energy,Coal,Oil,Natural gas,Solar energy,Easy
+100,LO5,Evaluating,Which action is most effective for conserving water?,Fixing leaks,Increasing irrigation,Using high-flow fixtures,Leaving taps running,Fixing leaks,Easy
+101,LO5,Evaluating,Which is the best approach to promote biodiversity?,Protecting habitats,Increasing deforestation,Promoting monoculture,Reducing conservation,Protecting habitats,Easy
+102,LO5,Evaluating,Which transportation method is most sustainable?,Cycling,Driving SUVs,Flying frequently,Using diesel buses,Cycling,Easy
+103,LO5,Evaluating,Which is the most sustainable building material?,Recycled steel,Concrete,Plastic,Single-use timber,Recycled steel,Easy
+104,LO5,Evaluating,Which policy is most effective for reducing air pollution?,Promoting electric vehicles,Increasing coal plants,Reducing public transit,Promoting deforestation,Promoting electric vehicles,Easy
+105,LO5,Evaluating,Which strategy is most effective for sustainable agriculture?,Crop rotation,Monoculture,Heavy pesticide use,Deforestation,Crop rotation,Medium
+106,LO5,Evaluating,Which is the best method to reduce plastic pollution?,Banning single-use plastics,Increasing plastic production,Reducing recycling,Promoting landfilling,Banning single-use plastics,Medium
+107,LO5,Evaluating,Which renewable energy source is most reliable for consistent power?,Hydropower,Solar energy,Wind energy,Biomass,Hydropower,Medium
+108,LO5,Evaluating,Which is the most effective way to reduce urban heat islands?,Increasing green spaces,Promoting asphalt,Reducing tree cover,Increasing concrete,Increasing green spaces,Medium
+109,LO5,Evaluating,Which policy best supports sustainable fisheries?,Enforcing catch limits,Promoting overfishing,Reducing marine reserves,Increasing bottom trawling,Enforcing catch limits,Medium
+110,LO5,Evaluating,Which is the most sustainable waste reduction strategy?,Circular economy,Landfilling,Incineration,Single-use products,Circular economy,Medium
+111,LO5,Evaluating,Which is the best approach to reduce deforestation?,Sustainable forestry,Increasing logging,Promoting urbanization,Reducing conservation,Sustainable forestry,Medium
+112,LO5,Evaluating,Which is the most effective way to improve energy efficiency?,Using smart grids,Increasing coal use,Reducing insulation,Promoting old appliances,Using smart grids,Medium
+113,LO5,Evaluating,Which is the most effective policy for reducing greenhouse gases?,Carbon pricing,Increasing fossil fuel subsidies,Reducing renewable energy,Promoting deforestation,Carbon pricing,Hard
+114,LO5,Evaluating,Which strategy best addresses soil degradation?,Using cover crops,Increasing chemical fertilizers,Promoting monoculture,Reducing crop rotation,Using cover crops,Hard
+115,LO5,Evaluating,Which is the most sustainable approach to urban planning?,Green infrastructure,Increasing urban sprawl,Reducing green spaces,Promoting pollution,Green infrastructure,Hard
+116,LO5,Evaluating,Which is the best method to protect marine ecosystems?,Creating marine reserves,Promoting overfishing,Reducing conservation,Increasing pollution,Creating marine reserves,Hard
+117,LO5,Evaluating,Which energy policy is most sustainable long-term?,Investing in renewables,Expanding coal plants,Reducing solar funding,Promoting oil extraction,Investing in renewables,Hard
+118,LO5,Evaluating,Which is the most effective way to address water scarcity?,Rainwater harvesting,Increasing irrigation,Reducing conservation,Promoting overuse,Rainwater harvesting,Hard
+119,LO5,Evaluating,Which is the best strategy for sustainable tourism?,Eco-friendly tours,Promoting mass tourism,Reducing conservation,Increasing deforestation,Eco-friendly tours,Hard
+120,LO5,Evaluating,Which is the most effective way to reduce global warming?,Reducing emissions,Increasing fossil fuel use,Promoting deforestation,Reducing renewable energy,Reducing emissions,Hard

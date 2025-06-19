@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduFuture - Learning Dashboard</title>
+   <link href="/static/css/dashboard.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Floating particles -->
+    <div class="particle" style="width: 10px; height: 10px; left: 10%; top: 20%; animation-delay: 0s;"></div>
+    <div class="particle" style="width: 15px; height: 15px; left: 80%; top: 10%; animation-delay: 1s;"></div>
+    <div class="particle" style="width: 8px; height: 8px; left: 60%; top: 70%; animation-delay: 2s;"></div>
+    <div class="particle" style="width: 12px; height: 12px; left: 20%; top: 80%; animation-delay: 3s;"></div>
+
+    <div class="container">
+        <!-- Banner Section -->
+        <div class="banner">
+            <h1>Personalised Learing Platform</h1>
+            <p>Empowering learners through a multidisciplinary, future-ready platform that integrates intelligent systems, 
+                environmental responsibility, and data-driven innovation.</p>
+            <h3>Select Any Course Below and Start your Learninng Journey</h3>
+        </div>
+
+        <!-- Courses Grid -->
+        <div class="courses-grid">
+            <!-- Sustainability Course -->
+            <div class="course-card" data-course="sustainability">
+                <div class="course-icon">🌱</div>
+                <h3 class="course-title">Sustainability</h3>
+                <p class="course-description">Explore sustainable practices and green technologies that shape tomorrow's world. Learn how to create environmentally conscious solutions for global challenges.</p>
+                <form action="{{ url_for('dash.set_choice') }}" method="POST">
+                 <input type="hidden" name="choice" value="sustainability">
+                <button type="submit" class="course-button">Explore Course</a></button>
+                </form>
+            </div>
+
+            <!-- Generative AI Course -->
+            <div class="course-card" data-course="genai">
+                <div class="course-icon">🤖</div>
+                <h3 class="course-title">Generative AI</h3>
+                <p class="course-description">Master the art of AI-powered creativity and automation. Dive deep into machine learning models that generate content, code, and innovative solutions.</p>
+                <form action="{{ url_for('dash.set_choice') }}" method="POST">
+                 <input type="hidden" name="choice" value="genai">
+                <button type="submit" class="course-button">Explore Course</a></button>
+                </form>
+            </div>
+
+            <!-- Environment Course -->
+            <div class="course-card" data-course="environment">
+                <div class="course-icon">🌍</div>
+                <h3 class="course-title">Environment</h3>
+                <p class="course-description">Understand climate science, ecosystem management, and environmental policy. Build expertise in conservation and renewable energy systems.</p>
+                <button class="course-buttons" style="background-color: red;color: aliceblue;">Under Development</button>
+            </div>
+
+            <!-- Data Analytics Course -->
+            <div class="course-card" data-course="analytics">
+                <div class="course-icon">📊</div>
+                <h3 class="course-title">Data Analytics</h3>
+                <p class="course-description">Transform raw data into actionable insights using cutting-edge analytical tools and techniques. Master statistical modeling and visualization.</p>
+                <button class="course-buttons" style="background-color: red;color: aliceblue;">Under Development</button>
+            </div>
+
+            <!-- Machine Design Course -->
+            <div class="course-card" data-course="design">
+                <div class="course-icon">⚙️</div>
+                <h3 class="course-title">Machine Design</h3>
+                <p class="course-description">Engineer the future with advanced mechanical design principles. Learn CAD modeling, simulation, and innovative manufacturing processes.</p>
+                <button class="course-buttons" style="background-color: red;color: aliceblue;">Under Development</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tooltip element -->
+    <div class="tooltip" id="tooltip"></div>
+
+    <script>
+        // Enhanced card interactions
+        const cards = document.querySelectorAll('.course-card');
+        const tooltip = document.getElementById('tooltip');
+
+        // Course details for tooltips
+        const courseDetails = {
+            sustainability: "Learn green tech, renewable energy, and sustainable development practices ",
+            genai: "Master GPT models, neural networks, and AI-powered creativity tools",
+            environment: "Study climate change, conservation, and environmental protection strategies",
+            analytics: "Excel in Python, R, SQL, and data visualization with real-world projects",
+            design: "Create innovative machines using CAD, 3D printing, and engineering principles"
+        };
+
+        cards.forEach(card => {
+            // Enhanced hover effects
+            card.addEventListener('mouseenter', (e) => {
+                const course = e.currentTarget.dataset.course;
+                const rect = e.currentTarget.getBoundingClientRect();
+                
+                tooltip.textContent = courseDetails[course];
+                tooltip.style.left = rect.left + rect.width / 2 - tooltip.offsetWidth / 2 + 'px';
+                tooltip.style.top = rect.top - 40 + 'px';
+                tooltip.classList.add('show');
+
+                // Add subtle glow effect
+                e.currentTarget.style.boxShadow = '0 25px 50px rgba(102, 126, 234, 0.3)';
+            });
+
+            card.addEventListener('mouseleave', (e) => {
+                tooltip.classList.remove('show');
+                e.currentTarget.style.boxShadow = '';
+            });
+
+            // Card click animation
+            card.addEventListener('click', (e) => {
+                e.currentTarget.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    e.currentTarget.style.transform = '';
+                }, 150);
+
+                // Simulate course navigation
+                const courseName = e.currentTarget.querySelector('.course-title').textContent;
+                alert(`🚀 Navigating to ${courseName} course...`);
+            });
+
+            // Button interactions
+            const button = card.querySelector('.course-button');
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
+                button.style.transform = 'scale(0.9)';
+                setTimeout(() => {
+                    button.style.transform = '';
+                }, 100);
+            });
+        });
+
+        // Parallax effect for floating particles
+        document.addEventListener('mousemove', (e) => {
+            const particles = document.querySelectorAll('.particle');
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+
+            particles.forEach((particle, index) => {
+                const speed = (index + 1) * 0.5;
+                const x = mouseX * speed * 10;
+                const y = mouseY * speed * 10;
+                particle.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards for scroll animations
+        cards.forEach(card => {
+            observer.observe(card);
+        });
+
+        // Add loading animation completion
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1';
+        });
+
+        // Enhanced keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                const focusedCard = document.activeElement.closest('.course-card');
+                if (focusedCard) {
+                    focusedCard.style.transform = 'translateY(-5px) scale(1.02)';
+                    setTimeout(() => {
+                        focusedCard.style.transform = '';
+                    }, 200);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

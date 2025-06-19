@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Learning Outcomes Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f1f5f9;
+      color: #2d3748;
+    }
+    .header {
+      background: linear-gradient(to right, #1e3a8a, #3b82f6);
+      color: #fff;
+      padding: 2rem 1rem;
+      text-align: center;
+      border-radius: 0 0 1rem 1rem;
+      margin-bottom: 2rem;
+    }
+    .dashboard-card {
+      background: #fff;
+      border-radius: 1rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      padding: 2rem;
+      transition: 0.3s ease-in-out;
+      height: 100%;
+    }
+    .dashboard-card:hover {
+      transform: scale(1.02);
+    }
+    .chart-container {
+      max-width: 200px;
+      margin: auto;
+    }
+    .lo-label {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .lo-desc {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 1rem;
+      min-height: 48px;
+    }
+    .footer {
+      margin-top: 3rem;
+      padding: 1rem;
+      background: #e2e8f0;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+    .badge-performance {
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <h1>📊 Learning Outcomes Feedback</h1>
+  <p>Hello, {{ session.email }} — Track your progress below</p>
+</div>
+
+<div class="container">
+  <div class="row g-4">
+    {% set descriptions = {
+        'LO1': 'Understanding basic concepts and principles.',
+        'LO2': 'Applying skills in practical situations.',
+        'LO3': 'Analyzing problems and identifying solutions.',
+        'LO4': 'Demonstrating critical thinking and creativity.',
+        'LO5': 'Communicating findings and outcomes effectively.'
+    } %}
+    
+    {% for lo in ['LO1','LO2','LO3','LO4','LO5'] %}
+      {% set data = all_results.get(lo) %}
+      <div class="col-md-6 col-lg-4">
+        <div class="dashboard-card text-center">
+          <div class="lo-label">{{ lo }}</div>
+          <div class="lo-desc">{{ descriptions[lo] }}</div>
+          
+          <div class="chart-container mb-3">
+            <canvas id="chart_{{ lo }}"></canvas>
+          </div>
+
+          {% if data %}
+            <p><strong>Avg Score:</strong> {{ data.average_score }}/6</p>
+            <p><strong>Best:</strong> {{ data.best_performance }}%</p>
+            {% if data.overall_percentage >= 80 %}
+              <span class="badge bg-success badge-performance">Excellent</span>
+            {% elif data.overall_percentage >= 50 %}
+              <span class="badge bg-warning text-dark badge-performance">Good Progress</span>
+            {% else %}
+              <span class="badge bg-danger badge-performance">Needs Improvement</span>
+            {% endif %}
+          {% else %}
+            <p class="text-muted">No attempts made yet.</p>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="text-center mt-5">
+    <a href="{{ url_for('LO.Learning') }}" class="btn btn-primary">🏠 Back to Home</a>
+  </div>
+</div>
+
+<div class="footer">
+  © 2025 Skill Feedback Dashboard. Made with ❤️ in India.
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const chartData = {
+      {% for lo in ['LO1','LO2','LO3','LO4','LO5'] %}
+        "{{ lo }}": {{ all_results.get(lo, {}).get("overall_percentage", 0) }},
+      {% endfor %}
+    };
+
+    Object.entries(chartData).forEach(([lo, percentage]) => {
+      const ctx = document.getElementById(`chart_${lo}`);
+      new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Achieved', 'Remaining'],
+          datasets: [{
+            data: [percentage, 100 - percentage],
+            backgroundColor: ['#10b981', '#e5e7eb'],
+            borderWidth: 2,
+            cutout: '70%'
+          }]
+        },
+        options: {
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: ctx => `${ctx.label}: ${ctx.raw}%`
+              }
+            },
+            title: {
+              display: true,
+              text: percentage + '%',
+              font: { size: 18 }
+            }
+          }
+        }
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

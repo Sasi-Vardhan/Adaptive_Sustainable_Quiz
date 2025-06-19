@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/css/LO.css" rel="stylesheet">
+    <title>Sustainability Learning Framework</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Sustainability Learning Framework</h1>
+            <p>Building Knowledge for a Sustainable Future</p>
+        </div>
+
+        <div class="quiz-grid">
+            <div class="quiz-card" onclick="toggleActive(this)">
+                <div class="quiz-icon">R</div>
+                <h3 class="quiz-title">LO1: Remembering</h3>
+                <p class="quiz-description">Recall fundamental facts and terminology related to sustainability</p>
+                <div class="quiz-examples">
+                    <h4>Example Abilities:</h4>
+                    <ul>
+                        <li>Identify renewable and non-renewable resources</li>
+                        <li>Recognize key terms like "carbon footprint"</li>
+                        <li>Name global initiatives like the SDGs</li>
+                    </ul>
+                </div>
+                    <form method="POST" action="{{ url_for('quiz.set_lesson') }}">
+                        <button class="test-knowledge-btn" name="lesson" value="LO1" type="submit">
+                            Test Your Knowledge
+                        </button>
+                </form>
+            </div>
+
+            <div class="quiz-card" onclick="toggleActive(this)">
+                <div class="quiz-icon">U</div>
+                <h3 class="quiz-title">LO2: Understanding</h3>
+                <p class="quiz-description">Explain and interpret key sustainability concepts and their implications</p>
+                <div class="quiz-examples">
+                    <h4>Example Abilities:</h4>
+                    <ul>
+                        <li>Describe how plastic pollution affects marine ecosystems</li>
+                        <li>Explain cause-effect of deforestation and climate change</li>
+                        <li>Interpret sustainability symbols or waste categories</li>
+                    </ul>
+                </div>
+                 <form method="POST" action="{{ url_for('quiz.set_lesson') }}">
+                        <button class="test-knowledge-btn" name="lesson" value="LO2" type="submit">
+                            Test Your Knowledge
+                        </button>
+                </form>
+            </div>
+
+            <div class="quiz-card" onclick="toggleActive(this)">
+                <div class="quiz-icon">A</div>
+                <h3 class="quiz-title">LO3: Applying</h3>
+                <p class="quiz-description">Apply sustainability knowledge to real-life situations</p>
+                <div class="quiz-examples">
+                    <h4>Example Abilities:</h4>
+                    <ul>
+                        <li>Choose the most eco-friendly product in a scenario</li>
+                        <li>Make decisions that reduce personal carbon footprint</li>
+                        <li>Apply 3Rs (Reduce, Reuse, Recycle) in environments</li>
+                    </ul>
+                </div>
+                <form method="POST" action="{{ url_for('quiz.set_lesson') }}">
+                        <button class="test-knowledge-btn" name="lesson" value="LO3" type="submit">
+                            Test Your Knowledge
+                        </button>
+                </form>
+            </div>
+
+            <div class="quiz-card" onclick="toggleActive(this)">
+                <div class="quiz-icon">An</div>
+                <h3 class="quiz-title">LO4: Analyzing</h3>
+                <p class="quiz-description">Analyze systems, problems, or choices related to sustainability</p>
+                <div class="quiz-examples">
+                    <h4>Example Abilities:</h4>
+                    <ul>
+                        <li>Compare sustainable and unsustainable practices</li>
+                        <li>Detect inefficiencies in energy or waste management</li>
+                        <li>Analyze case studies of city's green policies</li>
+                    </ul>
+                   <form method="POST" action="{{ url_for('quiz.set_lesson') }}">
+                        <button class="test-knowledge-btn" name="lesson" value="LO4" type="submit">
+                            Test Your Knowledge
+                        </button>
+                </form>
+                </div>
+            </div>
+
+            <div class="quiz-card" onclick="toggleActive(this)">
+                <div class="quiz-icon">E</div>
+                <h3 class="quiz-title">LO5: Evaluating</h3>
+                <p class="quiz-description">Evaluate solutions, strategies, or practices based on sustainability principles</p>
+                <div class="quiz-examples">
+                    <h4>Example Abilities:</h4>
+                    <ul>
+                        <li>Assess the effectiveness of a composting program</li>
+                        <li>Judge whether a government policy is sustainable</li>
+                        <li>Rate the sustainability of products or businesses</li>
+                    </ul>
+                     <form method="POST" action="{{ url_for('quiz.set_lesson') }}">
+                        <button class="test-knowledge-btn" name="lesson" value="LO5" type="submit">
+                            Test Your Knowledge
+                        </button>
+                </form>
+                </div>
+            </div>
+
+            <div class="quiz-card" onclick="toggleActive(this)">
+                <div class="quiz-icon">C</div>
+                <h3 class="quiz-title">LO6: Creating</h3>
+                <p class="quiz-description">Create and propose innovative sustainability solutions</p>
+                <div class="quiz-examples">
+                    <h4>Example Abilities:</h4>
+                    <ul>
+                        <li>Design a school-wide waste reduction campaign</li>
+                        <li>Create a personal sustainability action plan</li>
+                        <li>Propose eco-initiatives for community or workplace</li>
+                    </ul>
+                </div>
+                <button class="test-knowledge-btn" onclick="startQuiz('LO6')">Examine Your Idea</button>
+            </div>
+        </div>
+
+        <div class="feedback-section">
+            <a href="{{ url_for('feedback.set_learning_outcome', learning_outcome='LO1') }}" class="feedback-link">Go to Feedback</a>
+                <!-- <span>>> Go to Feedback Section</span>
+                <span class="arrow">→</span> -->
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function toggleActive(card) {
+            // Remove active class from all cards
+            const allCards = document.querySelectorAll('.quiz-card');
+            allCards.forEach(c => c.classList.remove('active'));
+            
+            // Add active class to clicked card
+            card.classList.add('active');
+            
+            // Add a subtle pulse animation
+            card.style.animation = 'pulse 0.6s ease-in-out';
+            setTimeout(() => {
+                card.style.animation = '';
+            }, 600);
+        }
+
+        // Add pulse animation keyframes
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0% { transform: scale(1) translateY(-5px); }
+                50% { transform: scale(1.02) translateY(-8px); }
+                100% { transform: scale(1) translateY(-5px); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Add smooth scroll behavior for feedback link
+        document.querySelector('.feedback-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            // You can add scroll behavior here or navigation logic
+            window.location.href = this.href;
+            alert('Navigating to Feedback Section... (This would typically navigate to another page or section)');
+        });
+
+        // Add keyboard accessibility
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                const focused = document.activeElement;
+                if (focused.classList.contains('quiz-card')) {
+                    e.preventDefault();
+                    toggleActive(focused);
+                }
+            }
+        });
+
+        // Make cards focusable for accessibility
+        document.querySelectorAll('.quiz-card').forEach(card => {
+            card.setAttribute('tabindex', '0');
+            card.setAttribute('role', 'button');
+            card.setAttribute('aria-label', `Quiz card: ${card.querySelector('.quiz-title').textContent}`);
+        });
+    </script>
+</body>
+</html>

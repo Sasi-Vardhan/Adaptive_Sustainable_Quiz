@@ -1,0 +1,66 @@
+{
+  "subjects": [
+    {
+      "name": "sustainability",
+      "learning_outcome_count": 6,
+      "filepath":"Questions/Sustainability_Questions.csv",
+      "learning_outcomes": [
+        {
+          "level": "Remember",
+          "outcome": "Define sustainability and identify its three core pillars: environmental, economic, and social."
+        },
+        {
+          "level": "Understand",
+          "outcome": "Explain the principles of sustainable development and their relevance to global challenges."
+        },
+        {
+          "level": "Apply",
+          "outcome": "Demonstrate sustainable practices in real-world contexts such as energy use, waste reduction, or transportation."
+        },
+        {
+          "level": "Analyze",
+          "outcome": "Compare the impact of unsustainable practices across different industries and ecosystems."
+        },
+        {
+          "level": "Evaluate",
+          "outcome": "Assess current policies and strategies for promoting sustainability in a chosen domain."
+        },
+        {
+          "level": "Create",
+          "outcome": "Design a sustainability action plan or campaign that addresses local or global environmental issues."
+        }
+      ]
+    },
+    {
+      "name": "Generative AI",
+      "learning_outcome_count": 6,
+      "filepath":"APP/Questions/generative_ai_questions.csv",
+      "learning_outcomes": [
+        {
+          "level": "Remember",
+          "outcome": "List foundational concepts and terminologies related to Generative AI and neural networks."
+        },
+        {
+          "level": "Understand",
+          "outcome": "Describe how transformer-based models like GPT, BERT, and DALL·E function and generate content."
+        },
+        {
+          "level": "Apply",
+          "outcome": "Utilize GenAI tools for generating content, such as text, images, or code, based on given prompts."
+        },
+        {
+          "level": "Analyze",
+          "outcome": "Differentiate between traditional AI and GenAI in terms of architecture, output quality, and use cases."
+        },
+        {
+          "level": "Evaluate",
+          "outcome": "Critically assess the ethical considerations of using GenAI, including bias, data privacy, and misinformation."
+        },
+        {
+          "level": "Create",
+          "outcome": "Develop a personalized learning roadmap or a GenAI-based application prototype that solves a real-world problem."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Outcomes Framework</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #fafafa;
+            min-height: 100vh;
+            color: #1a1a1a;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out 0.2s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            background: #ffffff;
+            color: #4a4a4a;
+            border: 1px solid #e8e8e8;
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .back-button:hover {
+            background: #f8f8f8;
+            transform: translateX(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .course-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #1a1a1a 0%, #4a4a4a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .course-subtitle {
+            font-size: 1.3rem;
+            color: #6a6a6a;
+            font-weight: 400;
+            margin-bottom: 2rem;
+        }
+
+        .stats-overview {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2a2a2a;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #6a6a6a;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 500;
+        }
+
+        .quiz-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .quiz-card {
+            background: #ffffff;
+            border: 1px solid #f0f0f0;
+            border-radius: 24px;
+            padding: 2.5rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUp 0.6s ease-out forwards;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .quiz-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #f0f0f0, #e0e0e0, #f0f0f0);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .quiz-card:hover::before,
+        .quiz-card.active::before {
+            transform: scaleX(1);
+        }
+
+        .quiz-card:hover,
+        .quiz-card.active {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            border-color: #e0e0e0;
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .quiz-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #2a2a2a;
+            border: 2px solid #f0f0f0;
+            background: #fafafa;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-card:hover .quiz-icon,
+        .quiz-card.active .quiz-icon {
+            background: #f0f0f0;
+            border-color: #e0e0e0;
+            transform: scale(1.05);
+        }
+
+        .quiz-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+        }
+
+        .quiz-description {
+            color: #4a4a4a;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .quiz-examples {
+            background: #fafafa;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid #f0f0f0;
+        }
+
+        .quiz-examples h4 {
+            color: #2a2a2a;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .quiz-examples ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .quiz-examples li {
+            color: #4a4a4a;
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .quiz-examples li::before {
+            content: '•';
+            color: #c0c0c0;
+            font-weight: bold;
+            position: absolute;
+            left: 0.5rem;
+        }
+
+        .test-knowledge-btn {
+            width: 100%;
+            background: #f8f8f8;
+            color: #2a2a2a;
+            border: 1px solid #e8e8e8;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-transform: none;
+        }
+
+        .test-knowledge-btn:hover {
+            background: #f0f0f0;
+            border-color: #d8d8d8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .test-knowledge-btn:active {
+            transform: translateY(0);
+        }
+
+        .feedback-section {
+            text-align: center;
+            padding: 3rem 0;
+            border-top: 1px solid #f0f0f0;
+            margin-top: 2rem;
+        }
+
+        .feedback-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: #ffffff;
+            color: #2a2a2a;
+            text-decoration: none;
+            padding: 1.25rem 2rem;
+            border-radius: 16px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: 1px solid #e8e8e8;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .feedback-link:hover {
+            background: #f8f8f8;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+
+        .arrow {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .feedback-link:hover .arrow {
+            transform: translateX(4px);
+        }
+
+        @keyframes pulse {
+            0% { transform: translateY(-8px) scale(1); }
+            50% { transform: translateY(-12px) scale(1.02); }
+            100% { transform: translateY(-8px) scale(1); }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .back-button {
+                position: static;
+                margin-bottom: 2rem;
+            }
+            
+            .quiz-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-overview {
+                gap: 2rem;
+            }
+            
+            .quiz-card {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-overview {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .quiz-card {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Level-specific icon colors using subtle grays */
+        .level-remember .quiz-icon { background: #fafafa; border-color: #f0f0f0; }
+        .level-understand .quiz-icon { background: #f8f8f8; border-color: #e8e8e8; }
+        .level-apply .quiz-icon { background: #f5f5f5; border-color: #e0e0e0; }
+        .level-analyze .quiz-icon { background: #f2f2f2; border-color: #d8d8d8; }
+        .level-evaluate .quiz-icon { background: #efefef; border-color: #d0d0d0; }
+        .level-create .quiz-icon { background: #ececec; border-color: #c8c8c8; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="back-button" onclick="goBack()">
+            ← Back to Dashboard
+        </button>
+
+        <div class="header">
+            <h1 class="course-title" id="courseTitle">Loading Course...</h1>
+            <p class="course-subtitle" id="courseSubtitle">Building comprehensive knowledge framework</p>
+            
+            <div class="stats-overview">
+                <div class="stat-item">
+                    <div class="stat-number" id="totalOutcomes">0</div>
+                    <div class="stat-label">Learning Outcomes</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="bloomLevels">0</div>
+                    <div class="stat-label">Bloom's Levels</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="readinessScore">0%</div>
+                    <div class="stat-label">Mastery Ready</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="quiz-grid" id="quizGrid">
+            <!-- Learning outcome cards will be dynamically generated here -->
+        </div>
+
+        <div class="feedback-section">
+            <a href="{{ url_for('feedback.show_feedback') }}" class="feedback-link">Go to Feedback</a>
+                <!-- <span>>> Go to Feedback Section</span>
+                <span class="arrow">→</span> -->    
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Dynamic course data
+        let courseData = {
+            name: '',
+            details: []
+        };
+
+        // Bloom's taxonomy configuration
+        const bloomsConfig = {
+            'remember': { 
+                icon: 'R', 
+                title: 'Remembering',
+                description: 'Recall and recognize fundamental facts and concepts',
+                defaultExample: 'Identify key terms, facts, and basic concepts'
+            },
+            'understand': { 
+                icon: 'U', 
+                title: 'Understanding',
+                description: 'Explain and interpret concepts and their relationships',
+                defaultExample: 'Describe processes and explain cause-and-effect relationships'
+            },
+            'apply': { 
+                icon: 'A', 
+                title: 'Applying',
+                description: 'Use knowledge and skills in practical situations',
+                defaultExample: 'Implement procedures and solve problems using learned concepts'
+            },
+            'analyze': { 
+                icon: 'An', 
+                title: 'Analyzing',
+                description: 'Break down complex information and examine relationships',
+                defaultExample: 'Compare different approaches and identify patterns'
+            },
+            'evaluate': { 
+                icon: 'E', 
+                title: 'Evaluating',
+                description: 'Make informed judgments based on criteria and evidence',
+                defaultExample: 'Assess effectiveness and critique different solutions'
+            },
+            'create': { 
+                icon: 'C', 
+                title: 'Creating',
+                description: 'Generate new ideas, products, or innovative solutions',
+                defaultExample: 'Design original solutions and develop new strategies'
+            }
+        };
+
+        // Initialize page with dynamic data
+        function initializePage(name = 'Sample Learning Framework', details = []) {
+            // console.log('{{learning_details}}')
+            // Default sample data if none provided
+            name='{{course_name}}';
+           details = {{ learning_details | tojson }};
+            console.log(details)
+            if (details.length === 0) {
+                details = [
+                    ["LO1", "Remember", "Define and identify fundamental concepts, terminology, and key facts relevant to the subject domain."],
+                    ["LO2", "Understand", "Explain relationships between concepts and interpret their significance in various contexts."],
+                    ["LO3", "Apply", "Implement learned principles and procedures to solve practical problems and real-world scenarios."],
+                    ["LO4", "Analyze", "Examine complex situations, compare different approaches, and identify underlying patterns and relationships."],
+                    ["LO5", "Evaluate", "Assess the effectiveness of different strategies and make informed judgments based on established criteria."],
+                    ["LO6", "Create", "Design innovative solutions and synthesize knowledge to develop original approaches and methodologies."]
+                ];
+            }
+
+            courseData = { name, details };
+            updateHeader();
+            generateQuizCards();
+            setupEventListeners();
+            animateCards();
+        }
+
+        function updateHeader() {
+            document.getElementById('courseTitle').textContent = courseData.name;
+            // console.log(courseData.name)
+            document.getElementById('courseSubtitle').textContent = 
+                `Comprehensive learning framework with ${courseData.details.length} structured outcomes`;
+            
+            // Update statistics
+            const levels = courseData.details.map(d => d[1].toLowerCase());
+            const uniqueLevels = new Set(levels).size;
+            const readiness = Math.round((courseData.details.length / 6) * 100);
+            
+            document.getElementById('totalOutcomes').textContent = courseData.details.length;
+            document.getElementById('bloomLevels').textContent = uniqueLevels;
+            document.getElementById('readinessScore').textContent = `${readiness}%`;
+            
+            animateNumbers();
+        }
+
+        function animateNumbers() {
+            const numbers = document.querySelectorAll('.stat-number');
+            numbers.forEach(num => {
+                const target = parseFloat(num.textContent.replace('%', ''));
+                let current = 0;
+                const increment = target / 30;
+                const timer = setInterval(() => {
+                    current = Math.min(current + increment, target);
+                    const suffix = num.textContent.includes('%') ? '%' : '';
+                    num.textContent = Math.round(current) + suffix;
+                    if (current >= target) clearInterval(timer);
+                }, 50);
+            });
+        }
+
+        function generateQuizCards() {
+            const grid = document.getElementById('quizGrid');
+            grid.innerHTML = '';
+
+            courseData.details.forEach((detail, index) => {
+                const [loNumber, level, outcome] = detail;
+                const levelKey = level.toLowerCase();
+                const config = bloomsConfig[levelKey] || bloomsConfig['remember'];
+                
+                const card = document.createElement('div');
+                card.className = `quiz-card level-${levelKey}`;
+                card.style.animationDelay = `${index * 0.1}s`;
+                card.setAttribute('tabindex', '0');
+                card.setAttribute('role', 'button');
+                card.setAttribute('aria-label', `Learning outcome ${loNumber}: ${config.title}`);
+
+                card.innerHTML = `
+                    <div class="quiz-icon">${config.icon}</div>
+                    <h3 class="quiz-title">${loNumber}: ${config.title}</h3>
+                    <p class="quiz-description">${config.description}</p>
+                    <div class="quiz-examples">
+                        <h4>Learning Objective:</h4>
+                        <ul>
+                            <li>${outcome}</li>
+                        </ul>
+                    </div>
+                    <form method="POST" action="{{ url_for('quiz.set_lesson') }}"style="margin: 0;">
+                        <button class="test-knowledge-btn" name="lesson" value="${loNumber}" type="submit">
+                            Test Your Knowledge
+                        </button>
+                    </form>
+                `;
+
+                grid.appendChild(card);
+            });
+        }
+
+        function setupEventListeners() {
+            // Card interaction
+            document.addEventListener('click', (e) => {
+                const card = e.target.closest('.quiz-card');
+                if (card && !e.target.closest('button')) {
+                    toggleActive(card);
+                }
+            });
+
+            // Keyboard accessibility
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    const focused = document.activeElement;
+                    if (focused.classList.contains('quiz-card')) {
+                        e.preventDefault();
+                        toggleActive(focused);
+                    }
+                }
+            });
+
+            // Feedback link
+            document.getElementById('feedbackLink').addEventListener('click', (e) => {
+                e.preventDefault();
+                // You can customize this navigation logic
+                console.log('Navigate to feedback section');
+                // window.location.href = '/feedback';
+            });
+        }
+
+        function toggleActive(card) {
+            // Remove active from all cards
+            document.querySelectorAll('.quiz-card').forEach(c => c.classList.remove('active'));
+            
+            // Add active to clicked card
+            card.classList.add('active');
+            
+            // Add pulse animation
+            card.style.animation = 'pulse 0.6s ease-in-out';
+            setTimeout(() => {
+                card.style.animation = '';
+            }, 600);
+        }
+
+        function animateCards() {
+            const cards = document.querySelectorAll('.quiz-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.animationDelay = `${index * 0.1}s`;
+                }, index * 100);
+            });
+        }
+
+        function goBack() {
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                console.log('Navigate to dashboard');
+            }
+        }
+
+        // Public function for backend integration
+        function updateWithBackendData(name, filepath, details) {
+            initializePage(name, details);
+        }
+
+        // Update feedback link with dynamic data
+        function updateFeedbackLink(baseUrl = '/feedback') {
+            const link = document.getElementById('feedbackLink');
+            if (courseData.details.length > 0) {
+                const firstLO = courseData.details[0][0]; // First LO number
+                link.href = `${baseUrl}/set_learning_outcome/${firstLO}`;
+            }
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            initializePage();
+            updateFeedbackLink();
+        });
+
+        // Export for global access
+        window.updateLearningOutcomes = updateWithBackendData;
+    </script>
+</body>
+</html>

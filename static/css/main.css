@@ -1,0 +1,582 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8fffe 0%, #f0f9f0 100%);
+            min-height: 100vh;
+            color: #2c3e50;
+        }
+        
+        .navbar-container {
+            position: relative;
+            margin: 30px auto;
+            max-width: 900px;
+            padding: 0 20px;
+        }
+        
+        #navB {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            /* border: 2px solid rgba(186, 85, 211, 0.3)   Medium Orchid with transparency; */
+            border: 2px solid rgba(192, 86, 206, 0.4) ; /* Custom mix — warmer and soft */
+            border-radius: 60px;
+            height: 90px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            /* border: linear-gradient(purple,gold); */
+        }
+        
+        #navB:hover {
+            border-color: rgba(255, 215, 0, 0.8);
+            box-shadow: 
+                0 0 30px rgba(255, 215, 0, 0.4),
+                0 8px 32px rgba(0, 0, 0, 0.15);
+        }
+        
+        #navB:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .container-fluid {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+        }
+        
+        .navbar-brand {
+            font-size: 28px;
+            font-weight: 600;
+            color: #2c3e50 !important;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 400;
+            font-size: 16px;
+            position: relative;
+            transition: all 0.3s ease;
+            padding: 8px 0;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #9b59b6, #ffd700, #e74c3c);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+            border-radius: 1px;
+        }
+        
+        .nav-links a:hover {
+            color: #1a252f;
+            transform: translateY(-1px);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .hero-section {
+            text-align: center;
+            padding: 80px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 300;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            font-weight: 300;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(44, 62, 80, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(44, 62, 80, 0.4);
+            color: white;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .feature-description {
+            color: #7f8c8d;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+        
+        
+        /* Smooth scrolling for navigation */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Content Sections */
+        .content-section, .features-section, .quiz-section, .contact-section {
+            padding: 80px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .container {
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 60px;
+            letter-spacing: -0.5px;
+        }
+        
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .about-text p {
+            color: #7f8c8d;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            font-size: 16px;
+        }
+        
+        .key-metrics {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .metric {
+            text-align: center;
+        }
+        
+        .metric-number {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+            line-height: 1;
+        }
+        
+        .metric-label {
+            display: block;
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-top: 8px;
+        }
+        
+        .about-visual {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .algorithm-box {
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .algorithm-box h4 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        
+        .formula {
+            font-family: 'Courier New', monospace;
+            font-size: 18px;
+            color: #9b59b6;
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #ffd700;
+        }
+        
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        /* Quiz Section */
+        .quiz-flow {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .flow-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+        
+        .step-number {
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            color: #2c3e50;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        
+        .step-content h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        
+        .step-content p {
+            color: #7f8c8d;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+        
+        .algorithm-details {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .algorithm-details h3 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+        
+        .math-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .math-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            border-left: 4px solid #9b59b6;
+        }
+        
+        .math-card h5 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .formula-block {
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            color: #9b59b6;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            text-align: center;
+            line-height: 1.6;
+        }
+        
+        .math-card p {
+            color: #7f8c8d;
+            font-size: 14px;
+            margin: 0;
+        }
+        
+        .quiz-cta {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .cta-button.large {
+            padding: 20px 50px;
+            font-size: 18px;
+        }
+        
+        .quiz-note {
+            color: #7f8c8d;
+            margin-top: 15px;
+            font-style: italic;
+        }
+        
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+        
+        .contact-info h4 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-weight: 500;
+            font-size: 1.3rem;
+        }
+        
+        .contact-info p {
+            color: #7f8c8d;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+        
+        .contact-features {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .contact-feature {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .feature-check {
+            color: #27ae60;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .demo-form {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        html {
+  scroll-behavior: smooth; /* optional if not using JS */
+}
+
+section {
+  scroll-margin-top: 80px; /* adjust based on navbar height */
+}
+
+        
+        .form-input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: rgba(255, 215, 0, 0.6);
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+        }
+        
+        .form-input::placeholder {
+            color: #bdc3c7;
+        }
+        
+        textarea.form-input {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        @media (max-width: 768px) {
+            .about-grid, .contact-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .key-metrics {
+                justify-content: center;
+                gap: 30px;
+            }
+            
+            .quiz-flow {
+                grid-template-columns: 1fr;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .math-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            .typewriter-text {
+            display: inline-block;
+            overflow: hidden;
+            border-right: 2px solid #000;
+            white-space: nowrap;
+            width: 0;
+            animation: typing 3s steps(30, end) forwards, blink 0.75s step-end infinite;
+            }
+
+            @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+            }
+
+            @keyframes blink {
+            50% { border-color: transparent }
+            }
+            @font-face {
+    font-family: 'TheFont';
+    
+    /* Variable fonts like the one linked below allow for fine-tuned control over various font properties dynamically via CSS, such as weight ('wght'), width ('wdth'), etc. This link is where your web browser will download the font from. */
+    /* Insert the link to your custom variable font */
+    src: url("https://garet.typeforward.com/assets/fonts/shared/TFMixVF.woff2")
+      format('woff2'); }
+
+
+  body.breathe-animation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Change the Background color of the entire screen */
+    background-color: black;
+    /* 'vw' is a viewport-width unit, 'vh' is a viewport-height unit. 1vw equals 1% of the width of the viewport, and 1vh equals 1% of the height of the viewport. This allows the font size to scale dynamically with the window size. */
+    height: 100vh;
+  }
+
+  .breathe-animation span {
+    font-family: 'TheFont';
+  
+    /* The 'clamp()' function sets a flexible font size that will never go below a minimum value and never above a maximum value. The middle value is preferred, but it will shrink or grow based on the viewport dimensions. */
+    /* Adjusts font size based on content width and viewport height */
+    font-size: clamp(10vw, 20vw, 50vh);
+  
+    /* Change this to set the text color */
+    color: white;
+  
+    /* Center text horizontally */
+    text-align: center; 
+  
+    /* The 'animation' property applies the 'letter-breathe' keyframes to the element, making it animate over 3 seconds.'ease-in-out' makes the movement start and end slowly, and 'infinite' makes it repeat forever. */
+    /* Controls the animation (3s is the duration) */
+    animation: letter-breathe 3s ease-in-out infinite;
+}
+  
+  /* Keyframes define the sequence of styles that an element will go through during an animation. */
+  @keyframes letter-breathe {
+   
+    /* The 'from' and 'to' keyframes establish the initial and final states of the animation, respectively, using 'font-variation-settings'. This CSS property is used with variable fonts to adjust their weight ('wght'), width ('wdth'), etc., during the animation. */
+    from,
+    to {
+      /* Starting weight; adjust the numbers according to your specific font */
+      font-variation-settings: 'wght' 100;
+    }
+
+    /* At the midpoint (50%) of the animation, the font weight changes to 900. */
+    50% {
+      /* Ending weight; adjust the numbers according to your specific font */
+      font-variation-settings: 'wght' 900;
+    }
+  }
+
+        }
