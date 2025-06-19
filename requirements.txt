@@ -1,0 +1,10 @@
+Flask==2.3.3
+gunicorn==21.2.0
+firebase-admin==6.4.0
+cryptography==42.0.7
+python-dotenv==1.0.1
+requests==2.31.0
+numpy==1.26.4
+scikit-fuzzy==0.4.2
+pandas
+json
