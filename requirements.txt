@@ -7,4 +7,4 @@ requests==2.31.0
 numpy==1.26.4
 #scikit-fuzzy==0.4.2
 matplotlib==3.8.4
-git+https://github.com/sanand0/scikit-fuzzy.git@no-distutils
+git+https://github.com/PhantomInsights/scikit-fuzzy.git@python312-compat
