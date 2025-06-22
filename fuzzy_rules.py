@@ -1,16 +1,37 @@
-import sys
 import os
+import sys
 import importlib.util
-import numpy as np
+import types
 
-# === Load scikit-fuzzy from local folder and alias it as skfuzzy === #
-scikit_fuzzy_path = os.path.join(os.path.dirname(__file__), 'scikit-fuzzy')
+# Path to your local scikit-fuzzy directory
+scikit_fuzzy_path = os.path.join(os.path.dirname(__file__), "scikit-fuzzy")
 
-# Load the package as 'skfuzzy'
-spec = importlib.util.spec_from_file_location("skfuzzy", os.path.join(scikit_fuzzy_path, "__init__.py"))
-skfuzzy = importlib.util.module_from_spec(spec)
+# Create a module object
+skfuzzy = types.ModuleType("skfuzzy")
+
+# Add to sys.modules
 sys.modules["skfuzzy"] = skfuzzy
-spec.loader.exec_module(skfuzzy)
+
+# Walk through all Python files in scikit-fuzzy directory
+for root, dirs, files in os.walk(scikit_fuzzy_path):
+    for file in files:
+        if file.endswith(".py"):
+            full_path = os.path.join(root, file)
+            module_name = (
+                "skfuzzy"
+                + full_path.replace(scikit_fuzzy_path, "").replace("/", ".").replace(".py", "")
+            )
+            if module_name.endswith("__init__"):
+                module_name = module_name.rsplit(".", 1)[0]
+
+            spec = importlib.util.spec_from_file_location(module_name, full_path)
+            mod = importlib.util.module_from_spec(spec)
+            sys.modules[module_name] = mod
+            try:
+                spec.loader.exec_module(mod)
+            except Exception as e:
+                print(f"Failed to load {module_name}: {e}")
+
 
 # Import modules from the now-loaded skfuzzy
 from skfuzzy import control as ctrl
