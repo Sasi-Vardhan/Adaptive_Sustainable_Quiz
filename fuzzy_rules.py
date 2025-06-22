@@ -1,41 +1,28 @@
-import os
-import sys
-import importlib.util
-import types
+import sys, os, importlib.util, types
 
-# Path to your local scikit-fuzzy directory
-scikit_fuzzy_path = os.path.join(os.path.dirname(__file__), "scikit-fuzzy")
+# Path to the actual skfuzzy module inside scikit-fuzzy/
+skfuzzy_path = os.path.join(os.path.dirname(__file__), "scikit-fuzzy", "skfuzzy")
 
-# Create a module object
-skfuzzy = types.ModuleType("skfuzzy")
+# Create and register root module
+skfuzzy_module = types.ModuleType("skfuzzy")
+sys.modules["skfuzzy"] = skfuzzy_module
 
-# Add to sys.modules
-sys.modules["skfuzzy"] = skfuzzy
-
-# Walk through all Python files in scikit-fuzzy directory
-for root, dirs, files in os.walk(scikit_fuzzy_path):
+# Recursively import all skfuzzy submodules
+for root, dirs, files in os.walk(skfuzzy_path):
     for file in files:
         if file.endswith(".py"):
             full_path = os.path.join(root, file)
-            module_name = (
-                "skfuzzy"
-                + full_path.replace(scikit_fuzzy_path, "").replace("/", ".").replace(".py", "")
-            )
-            if module_name.endswith("__init__"):
-                module_name = module_name.rsplit(".", 1)[0]
+            rel_path = os.path.relpath(full_path, skfuzzy_path)
+            mod_name = "skfuzzy." + rel_path.replace(os.sep, ".").replace(".py", "")
+            if mod_name.endswith(".__init__"):
+                mod_name = mod_name.rsplit(".", 1)[0]
 
-            spec = importlib.util.spec_from_file_location(module_name, full_path)
+            spec = importlib.util.spec_from_file_location(mod_name, full_path)
             mod = importlib.util.module_from_spec(spec)
-            sys.modules[module_name] = mod
-            try:
-                spec.loader.exec_module(mod)
-            except Exception as e:
-                print(f"Failed to load {module_name}: {e}")
-
-
-# Import modules from the now-loaded skfuzzy
-from skfuzzy import control as ctrl
+            sys.modules[mod_name] = mod
+            spec.loader.exec_module(mod)
 import skfuzzy as fuzz
+from skfuzzy import control as ctrl
 
 # === Your original fuzzy system code === #
 def setup_fuzzy_system():
