@@ -1,4 +1,8 @@
 import numpy as np
+sys.path.append(os.path.abspath(os.path.dirname(__file__)))
+
+# Import the module manually and alias it as 'skfuzzy'
+import scikit_fuzzy as skfuzzy  # <
 import skfuzzy as fuzz
 from skfuzzy import control as ctrl
 
