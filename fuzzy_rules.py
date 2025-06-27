@@ -4,16 +4,16 @@ import types
 import importlib.util
 import numpy as np
 
-# Path to the local skfuzzy module inside scikit-fuzzy/
+# Path to the skfuzzy source inside the project
 skfuzzy_path = os.path.join(os.path.dirname(__file__), "scikit-fuzzy", "skfuzzy")
 
-# Register base package
+# Create the base module
 skfuzzy_module = types.ModuleType("skfuzzy")
 sys.modules["skfuzzy"] = skfuzzy_module
 
-# Recursively import all skfuzzy submodules (excluding tests)
+# Recursively load modules EXCEPT tests
+loaded_modules = []
 for root, dirs, files in os.walk(skfuzzy_path):
-    # Skip test folders
     if "test" in root or "tests" in root:
         continue
 
@@ -25,14 +25,23 @@ for root, dirs, files in os.walk(skfuzzy_path):
             if mod_name.endswith(".__init__"):
                 mod_name = mod_name.rsplit(".", 1)[0]
 
-            spec = importlib.util.spec_from_file_location(mod_name, full_path)
-            mod = importlib.util.module_from_spec(spec)
-            sys.modules[mod_name] = mod
-            spec.loader.exec_module(mod)
+            try:
+                spec = importlib.util.spec_from_file_location(mod_name, full_path)
+                mod = importlib.util.module_from_spec(spec)
+                sys.modules[mod_name] = mod
+                spec.loader.exec_module(mod)
+                loaded_modules.append(mod_name)
+            except Exception as e:
+                print(f"⚠️ Failed to load {mod_name}: {e}")
 
-# Now import normally
+# DEBUG: ensure control module is imported
+if "skfuzzy.control" not in sys.modules:
+    print("❌ skfuzzy.control not loaded!")
+
+# Now import fuzzy modules
 import skfuzzy as fuzz
 from skfuzzy import control as ctrl
+
 
 # === Your fuzzy logic system === #
 def setup_fuzzy_system():
