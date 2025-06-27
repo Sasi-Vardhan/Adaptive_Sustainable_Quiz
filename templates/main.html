@@ -6,40 +6,173 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* Keep all existing styles and just add responsive navbar fixes */
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            padding-top: 80px;
+            background-color: #fafafa;
+        }
+
+        /* Fixed navbar container */
         .navbar-container {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
-        }
-
-        .navbar {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            padding: 1rem;
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Main navbar */
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
         }
 
+        /* Brand logo */
         .navbar-brand {
             font-size: 1.8rem;
             font-weight: 600;
+            color: #1a202c;
             text-decoration: none;
+            transition: color 0.3s ease;
         }
 
+        .navbar-brand:hover {
+            color: #4a5568;
+        }
+
+        /* Animation keyframes */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Scroll animation classes */
+        .animate-ready {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Enhanced hover effects */
+        .feature-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .metric {
+            transition: all 0.3s ease;
+        }
+
+        .metric:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Active navigation link styling */
+        .nav-links a.active,
+        .mobile-nav-links a.active {
+            color: #4a5568;
+            font-weight: 600;
+        }
+
+        .nav-links a.active::after {
+            width: 100%;
+            background-color: #4a5568;
+        }
+
+        .mobile-nav-links a.active {
+            border-left-color: #4a5568;
+            background-color: rgba(74, 85, 104, 0.1);
+        }
+
+        /* Desktop navigation links */
         .nav-links {
             display: flex;
             gap: 2rem;
             align-items: center;
+            list-style: none;
         }
 
         .nav-links a {
             text-decoration: none;
             font-weight: 500;
-            transition: all 0.3s ease;
+            color: #2d3748;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #4a5568;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #4a5568;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         /* Mobile menu toggle button */
@@ -50,6 +183,12 @@
             font-size: 1.5rem;
             cursor: pointer;
             padding: 0.5rem;
+            color: #2d3748;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu-toggle:hover {
+            color: #4a5568;
         }
 
         /* Mobile navigation menu */
@@ -61,10 +200,10 @@
             right: 0;
             background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(15px);
-            padding: 1rem;
+            padding: 1rem 0;
             flex-direction: column;
-            gap: 1rem;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border-top: 1px solid rgba(226, 232, 240, 0.8);
         }
 
         .mobile-nav-links.active {
@@ -74,14 +213,28 @@
         .mobile-nav-links a {
             text-decoration: none;
             font-weight: 500;
-            padding: 0.75rem 1rem;
-            border-radius: 8px;
+            color: #2d3748;
+            padding: 0.75rem 2rem;
             transition: all 0.3s ease;
-            text-align: center;
+            border-left: 4px solid transparent;
+        }
+
+        .mobile-nav-links a:hover {
+            color: #4a5568;
+            background-color: rgba(0, 0, 0, 0.05);
+            border-left-color: #4a5568;
         }
 
         /* Responsive breakpoints */
         @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+
+            .navbar {
+                padding: 0.75rem 1rem;
+            }
+
             .nav-links {
                 display: none;
             }
@@ -89,295 +242,638 @@
             .mobile-menu-toggle {
                 display: block;
             }
-        }
 
-        /* Add top padding to account for fixed navbar */
-        body {
-            padding-top: 80px;
-        }
-
-        @media (max-width: 768px) {
-            body {
-                padding-top: 70px;
+            .navbar-brand {
+                font-size: 1.5rem;
             }
         }
+
+        /* Page sections styling */
+        .hero-section {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 50%, #e2e8f0 100%);
+            color: #1a202c;
+            padding: 6rem 2rem;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(226, 232, 240, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            opacity: 0.8;
+            color: #4a5568;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #718096 0%, #4a5568 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(74, 85, 104, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button:hover {
+            background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(74, 85, 104, 0.4);
+            color: white;
+        }
+
+        .content-section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #1a202c;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #4a5568;
+        }
+
+        .key-metrics {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .metric {
+            text-align: center;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #f7fafc 100%);
+            border-radius: 12px;
+            flex: 1;
+            border: 1px solid #e2e8f0;
+        }
+
+        .metric-number {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #4a5568;
+        }
+
+        .metric-label {
+            font-size: 0.9rem;
+            color: #718096;
+            font-weight: 500;
+        }
+
+        .algorithm-box {
+            background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(45, 55, 72, 0.3);
+        }
+
+        .algorithm-box h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .formula {
+            font-size: 1.2rem;
+            font-family: 'Courier New', monospace;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .features-section {
+            background: #ffffff;
+            padding: 5rem 2rem;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f7fafc 100%);
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #1a202c;
+        }
+
+        .feature-description {
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        .quiz-section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #fafafa;
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+            color: white;
+            padding: 5rem 2rem;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.9);
+            font-family: 'Inter', sans-serif;
+            color: #2d3748;
+        }
+
+        /* Mobile responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .key-metrics {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Ensure sections maintain proper positioning */
+        section {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Remove any transforms that might cause positioning issues */
+        .hero-section.no-parallax {
+            transform: none !important;
+        }
     </style>
-     <link href="/static/css/main.css" rel="stylesheet">
     <title>Personalized Learning Plans</title>
 </head>
-<body >
+<body>
     <div class="navbar-container">
-        <nav class="navbar" id="navB">
-            <div class="container-fluid">
-                <a class="navbar-brand">PLP</a>
-                <div class="nav-links">
-                    <a href="#home">Home</a>
-                    <a href="#about">About Us</a>
-                    <a href="#features">Features</a>
-                    <a href="#adaptive-quiz">Adaptive Quiz</a>
-                    <a href="#contact">Contact Us</a>
-                </div>
-                <button class="mobile-menu-toggle" id="mobileMenuToggle">
-                    ☰
-                </button>
-                <div class="mobile-nav-links" id="mobileNavLinks">
-                    <a href="#home">Home</a>
-                    <a href="#about">About Us</a>
-                    <a href="#features">Features</a>
-                    <a href="#adaptive-quiz">Adaptive Quiz</a>
-                    <a href="#contact">Contact Us</a>
-                </div>
+        <nav class="navbar">
+            <a href="#" class="navbar-brand">PLP</a>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#about">About Us</a>
+                <a href="#features">Features</a>
+                <a href="#adaptive-quiz">Adaptive Quiz</a>
+                <a href="#contact">Contact Us</a>
+            </div>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                ☰
+            </button>
+            <div class="mobile-nav-links" id="mobileNavLinks">
+                <a href="#home">Home</a>
+                <a href="#about">About Us</a>
+                <a href="#features">Features</a>
+                <a href="#adaptive-quiz">Adaptive Quiz</a>
+                <a href="#contact">Contact Us</a>
             </div>
         </nav>
     </div>
     
     <div class="hero-section" id="home">
-    <h1 class="hero-title">
-        <span >Personalized Learning Plans</span>
-    </h1>
-    <p class="hero-subtitle">
-        Advanced adaptive learning system powered by AI algorithms that adjusts to your performance in real-time, 
-        ensuring optimal difficulty progression and maintaining a 70% target success rate for effective learning.
-    </p>
-    <a href="{{ url_for('auth.login') }}"  class="cta-button">Start Adaptive Quiz</a>
-</div>
+        <h1 class="hero-title">
+            <span>Personalized Learning Plans</span>
+        </h1>
+        <p class="hero-subtitle">
+            Advanced adaptive learning system powered by AI algorithms that adjusts to your performance in real-time, 
+            ensuring optimal difficulty progression and maintaining a 70% target success rate for effective learning.
+        </p>
+        <a href="{{ url_for('auth.login') }}" class="cta-button">Start Adaptive Quiz</a>
+    </div>
+
     <section id="about" class="content-section">
-        <div class="container">
-            <h2 class="section-title">About Our Adaptive Learning System</h2>
-            <div class="about-grid">
-                <div class="about-text">
-                    <p>Our Personalized Learning Platform utilizes cutting-edge Flask-based adaptive algorithms to deliver a revolutionary 15-question quiz experience. Unlike traditional static assessments, our system dynamically adjusts question difficulty based on your performance using sophisticated probabilistic models.</p>
-                    
-                    <p>The platform begins with three fixed questions (easy, medium, hard) to establish your baseline knowledge, then intelligently selects the remaining 12 questions using advanced streak-based progression algorithms. This ensures you're always challenged at the optimal difficulty level.</p>
-                    
-                    <div class="key-metrics">
-                        <div class="metric">
-                            <span class="metric-number">70%</span>
-                            <span class="metric-label">Target Success Rate</span>
-                        </div>
-                        <div class="metric">
-                            <span class="metric-number">15</span>
-                            <span class="metric-label">Adaptive Questions</span>
-                        </div>
-                        <div class="metric">
-                            <span class="metric-number">3</span>
-                            <span class="metric-label">Difficulty Levels</span>
-                        </div>
+        <h2 class="section-title">About Our Adaptive Learning System</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>Our Personalized Learning Platform utilizes cutting-edge Flask-based adaptive algorithms to deliver a revolutionary 15-question quiz experience. Unlike traditional static assessments, our system dynamically adjusts question difficulty based on your performance using sophisticated probabilistic models.</p>
+                
+                <p>The platform begins with three fixed questions (easy, medium, hard) to establish your baseline knowledge, then intelligently selects the remaining 12 questions using advanced streak-based progression algorithms. This ensures you're always challenged at the optimal difficulty level.</p>
+                
+                <div class="key-metrics">
+                    <div class="metric">
+                        <span class="metric-number">70%</span>
+                        <span class="metric-label">Target Success Rate</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-number">15</span>
+                        <span class="metric-label">Adaptive Questions</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-number">3</span>
+                        <span class="metric-label">Difficulty Levels</span>
                     </div>
                 </div>
-                <div class="about-visual">
-                    <div class="algorithm-box">
-                        <h4>Core Algorithm</h4>
-                        <div class="formula">
-                            p<sub>new</sub> = (1 - α) × p<sub>old</sub> + α × isCorrect
-                        </div>
-                        <p>Our probability update mechanism ensures continuous learning adaptation</p>
+            </div>
+            <div class="about-visual">
+                <div class="algorithm-box">
+                    <h4>Core Algorithm</h4>
+                    <div class="formula">
+                        p<sub>new</sub> = (1 - α) × p<sub>old</sub> + α × isCorrect
                     </div>
+                    <p>Our probability update mechanism ensures continuous learning adaptation</p>
                 </div>
             </div>
         </div>
     </section>
     
     <section id="features" class="features-section">
-        <div class="container">
-            <h2 class="section-title">Advanced Features</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🧠</div>
-                    <h3 class="feature-title">Probabilistic Models</h3>
-                    <p class="feature-description">
-                        Uses sophisticated probability calculations (p<sub>e</sub>, p<sub>m</sub>, p<sub>h</sub>) to determine optimal question difficulty based on your performance patterns.
-                    </p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📈</div>
-                    <h3 class="feature-title">Streak-Based Progression</h3>
-                    <p class="feature-description">
-                        Prevents continuous easy loops by automatically promoting to medium difficulty after 3 consecutive correct answers, ensuring continuous growth.
-                    </p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⚖️</div>
-                    <h3 class="feature-title">Weighted Scoring</h3>
-                    <p class="feature-description">
-                        Normalized scoring system: Easy (1×), Medium (3.5×), Hard (5.5×) questions with comprehensive performance analytics.
-                    </p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3 class="feature-title">Target Success Rate</h3>
-                    <p class="feature-description">
-                        Maintains optimal 70% success rate using exponential weight calculations to ensure challenging yet achievable learning progression.
-                    </p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔍</div>
-                    <h3 class="feature-title">Bloom's Taxonomy</h3>
-                    <p class="feature-description">
-                        Questions filtered specifically for "Remembering" level from Bloom's taxonomy, ensuring foundational knowledge assessment.
-                    </p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🛡️</div>
-                    <h3 class="feature-title">Robust Error Handling</h3>
-                    <p class="feature-description">
-                        Comprehensive edge case management with fallback mechanisms, session management, and detailed probability logging for debugging.
-                    </p>
-                </div>
+        <h2 class="section-title">Advanced Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🧠</div>
+                <h3 class="feature-title">Probabilistic Models</h3>
+                <p class="feature-description">
+                    Uses sophisticated probability calculations (p<sub>e</sub>, p<sub>m</sub>, p<sub>h</sub>) to determine optimal question difficulty based on your performance patterns.
+                </p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📈</div>
+                <h3 class="feature-title">Streak-Based Progression</h3>
+                <p class="feature-description">
+                    Prevents continuous easy loops by automatically promoting to medium difficulty after 3 consecutive correct answers, ensuring continuous growth.
+                </p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚖️</div>
+                <h3 class="feature-title">Weighted Scoring</h3>
+                <p class="feature-description">
+                    Normalized scoring system: Easy (1×), Medium (3.5×), Hard (5.5×) questions with comprehensive performance analytics.
+                </p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3 class="feature-title">Target Success Rate</h3>
+                <p class="feature-description">
+                    Maintains optimal 70% success rate using exponential weight calculations to ensure challenging yet achievable learning progression.
+                </p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔍</div>
+                <h3 class="feature-title">Bloom's Taxonomy</h3>
+                <p class="feature-description">
+                    Questions filtered specifically for "Remembering" level from Bloom's taxonomy, ensuring foundational knowledge assessment.
+                </p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3 class="feature-title">Robust Error Handling</h3>
+                <p class="feature-description">
+                    Comprehensive edge case management with fallback mechanisms, session management, and detailed probability logging for debugging.
+                </p>
             </div>
         </div>
     </section>
     
     <section id="adaptive-quiz" class="quiz-section">
-        <div class="container">
-            <h2 class="section-title">How Our Adaptive Quiz Works</h2>
-            <div class="quiz-flow">
-                <div class="flow-step">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                        <h4>Initialization</h4>
-                        <p>System sets up with equal probabilities (p<sub>e</sub> = p<sub>m</sub> = p<sub>h</sub> = 1/3) and prepares 15-question adaptive sequence.</p>
-                    </div>
-                </div>
-                <div class="flow-step">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                        <h4>Baseline Assessment</h4>
-                        <p>First three questions are fixed: Easy → Medium → Hard to establish your initial performance baseline.</p>
-                    </div>
-                </div>
-                <div class="flow-step">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                        <h4>Adaptive Selection</h4>
-                        <p>Questions 4-15 are dynamically selected using probability weights and streak analysis to optimize difficulty.</p>
-                    </div>
-                </div>
-                <div class="flow-step">
-                    <div class="step-number">4</div>
-                    <div class="step-content">
-                        <h4>Real-time Updates</h4>
-                        <p>After each answer, probabilities are updated using learning rate coefficients (α<sub>h</sub> = 0.15, α<sub>e</sub> = 0.075, α<sub>m</sub> ≈ 0.0577).</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="algorithm-details">
-                <h3>Mathematical Foundation</h3>
-                <div class="math-grid">
-                    <div class="math-card">
-                        <h5>Selection Weights</h5>
-                        <div class="formula-block">
-                            diff<sub>d</sub> = |p<sub>d</sub> - p<sub>target</sub>|<br>
-                            weight<sub>d</sub> = exp(-diff<sub>d</sub>/τ)
-                        </div>
-                        <p>Where τ = 0.1 and p<sub>target</sub> = 0.7</p>
-                    </div>
-                    <div class="math-card">
-                        <h5>Scoring Formula</h5>
-                        <div class="formula-block">
-                            score = (easy×1 + medium×3.5 + hard×5.5) / (15 × 3.33)
-                        </div>
-                        <p>Normalized weighted scoring system</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="quiz-cta">
-                <a href="{{ url_for('auth.login') }}" class="cta-button large">Launch Adaptive Quiz System</a>
-                <p class="quiz-note">Experience personalized learning with real-time difficulty adaptation</p>
-            </div>
+        <h2 class="section-title">How Our Adaptive Quiz Works</h2>
+        <div style="text-align: center; padding: 2rem; background: linear-gradient(135deg, #ffffff 0%, #f7fafc 100%); border-radius: 16px; border: 1px solid #e2e8f0;">
+            <h3 style="color: #4a5568; margin-bottom: 1rem;">Quiz Flow Process</h3>
+            <p style="color: #718096; margin-bottom: 2rem;">Experience our 4-step adaptive learning process</p>
+            <a href="#" class="cta-button">Launch Adaptive Quiz System</a>
         </div>
     </section>
     
     <section id="contact" class="contact-section">
-        <div class="container">
-            <h2 class="section-title">Get Started with Personalized Learning</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h4>Ready to experience adaptive learning?</h4>
-                    <p>Our advanced Flask-based system is ready to provide you with a personalized educational experience that adapts to your learning pace and style.</p>
-                    
-                    <div class="contact-features">
-                        <div class="contact-feature">
-                            <span class="feature-check">✓</span>
-                            <span>Immediate feedback and adaptation</span>
-                        </div>
-                        <div class="contact-feature">
-                            <span class="feature-check">✓</span>
-                            <span>Detailed performance analytics</span>
-                        </div>
-                        <div class="contact-feature">
-                            <span class="feature-check">✓</span>
-                            <span>Scientifically-backed algorithms</span>
-                        </div>
-                        <div class="contact-feature">
-                            <span class="feature-check">✓</span>
-                            <span>Continuous difficulty optimization</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <form class="demo-form" method="post">
-                        <input type="text" placeholder="Your Name" class="form-input" name="rqName">
-                        <input type="email" placeholder="Email Address" class="form-input" name="email">
-                        <select class="form-input" name="goal">
-                            <option>Select Learning Goal</option>
-                            <option>Academic Assessment</option>
-                            <option>Skill Development</option>
-                            <option>Knowledge Evaluation</option>
-                        </select>
-                        <textarea placeholder="Tell us about your learning objectives..." class="form-input" name="objectives"></textarea>
-                        <button type="submit" class="cta-button">Request Demo Access</button>
-                    </form>
-                </div>
+        <h2 class="section-title">Get Started with Personalized Learning</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <h4>Ready to experience adaptive learning?</h4>
+                <p>Our advanced Flask-based system is ready to provide you with a personalized educational experience that adapts to your learning pace and style.</p>
+            </div>
+            <div class="contact-form">
+                <form class="demo-form">
+                    <input type="text" placeholder="Your Name" class="form-input" name="rqName">
+                    <input type="email" placeholder="Email Address" class="form-input" name="email">
+                    <select class="form-input" name="goal">
+                        <option>Select Learning Goal</option>
+                        <option>Academic Assessment</option>
+                        <option>Skill Development</option>
+                        <option>Knowledge Evaluation</option>
+                    </select>
+                    <textarea placeholder="Tell us about your learning objectives..." class="form-input" name="objectives" rows="4"></textarea>
+                    <button type="submit" class="cta-button">Request Demo Access</button>
+                </form>
             </div>
         </div>
     </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
     <script>
-    // Mobile menu toggle
-    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-    const mobileNavLinks = document.getElementById('mobileNavLinks');
+        // Smooth scrolling utility function
+        function smoothScrollTo(targetPosition, duration = 800) {
+            const startPosition = window.pageYOffset;
+            const distance = targetPosition - startPosition;
+            let startTime = null;
 
-    mobileMenuToggle.addEventListener('click', function() {
-        mobileNavLinks.classList.toggle('active');
-        this.textContent = mobileNavLinks.classList.contains('active') ? '✕' : '☰';
-    });
+            function animation(currentTime) {
+                if (startTime === null) startTime = currentTime;
+                const timeElapsed = currentTime - startTime;
+                const progress = Math.min(timeElapsed / duration, 1);
 
-    // Smooth scroll for nav links (both desktop and mobile)
-    document.querySelectorAll('.nav-links a[href^="#"], .mobile-nav-links a[href^="#"]').forEach(link => {
-        link.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            const targetSection = document.getElementById(targetId);
+                // Easing function for smoother animation
+                const ease = progress < 0.5 
+                    ? 2 * progress * progress 
+                    : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+
+                window.scrollTo(0, startPosition + (distance * ease));
+
+                if (timeElapsed < duration) {
+                    requestAnimationFrame(animation);
+                }
+            }
+
+            requestAnimationFrame(animation);
+        }
+
+        // Intersection observer for scroll animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px 0px -100px 0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, observerOptions);
+
+        // Mobile menu functionality
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileNavLinks = document.getElementById('mobileNavLinks');
+        let isMenuOpen = false;
+
+        function toggleMobileMenu() {
+            isMenuOpen = !isMenuOpen;
+            mobileNavLinks.classList.toggle('active', isMenuOpen);
+            mobileMenuToggle.textContent = isMenuOpen ? '✕' : '☰';
             
-            // Close mobile menu if open
-            if (mobileNavLinks.classList.contains('active')) {
+            // Prevent body scroll when menu is open
+            document.body.style.overflow = isMenuOpen ? 'hidden' : 'auto';
+        }
+
+        function closeMobileMenu() {
+            if (isMenuOpen) {
+                isMenuOpen = false;
                 mobileNavLinks.classList.remove('active');
                 mobileMenuToggle.textContent = '☰';
+                document.body.style.overflow = 'auto';
             }
+        }
 
-            if (targetSection) {
-                const navbarHeight = document.querySelector('.navbar-container').offsetHeight;
-                const targetPosition = targetSection.offsetTop - navbarHeight;
+        mobileMenuToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleMobileMenu();
+        });
+
+        // Enhanced smooth scroll for navigation links
+        document.querySelectorAll('.nav-links a[href^="#"], .mobile-nav-links a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
                 
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
+                closeMobileMenu();
+
+                if (targetSection) {
+                    const navbarHeight = document.querySelector('.navbar-container').offsetHeight;
+                    const targetPosition = targetSection.offsetTop - navbarHeight - 20;
+                    smoothScrollTo(targetPosition, 1000);
+                }
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!mobileNavLinks.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+                closeMobileMenu();
             }
         });
-    });
 
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', function(e) {
-        if (!e.target.closest('.navbar') && mobileNavLinks.classList.contains('active')) {
-            mobileNavLinks.classList.remove('active');
-            mobileMenuToggle.textContent = '☰';
+        // Close mobile menu on window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                closeMobileMenu();
+            }
+        });
+
+        // Simplified scroll handler without parallax effects
+        let ticking = false;
+
+        function updateOnScroll() {
+            const currentScrollY = window.pageYOffset;
+            const sections = document.querySelectorAll('section[id], .hero-section[id]');
+            const navLinks = document.querySelectorAll('.nav-links a[href^="#"], .mobile-nav-links a[href^="#"]');
+            const navbar = document.querySelector('.navbar-container');
+            
+            // Navbar background opacity based on scroll
+            const scrollProgress = Math.min(currentScrollY / 100, 1);
+            navbar.style.background = `rgba(255, 255, 255, ${0.85 + (scrollProgress * 0.15)})`;
+            
+            // Find current section
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                const navbarHeight = navbar.offsetHeight;
+                
+                if (currentScrollY >= sectionTop - navbarHeight - 100 && 
+                    currentScrollY < sectionTop + sectionHeight - navbarHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            // Update active navigation links
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+
+            ticking = false;
         }
-    });
+
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(updateOnScroll);
+                ticking = true;
+            }
+        }
+
+        window.addEventListener('scroll', requestTick, { passive: true });
+
+        // Initialize animations when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Observe elements for scroll animations
+            const animatedElements = document.querySelectorAll('.feature-card, .metric, .algorithm-box, .about-text');
+            animatedElements.forEach(el => {
+                el.classList.add('animate-ready');
+                observer.observe(el);
+            });
+
+            // Initial navbar state
+            updateOnScroll();
+
+            // Preload and animate hero section
+            const heroTitle = document.querySelector('.hero-title');
+            const heroSubtitle = document.querySelector('.hero-subtitle');
+            const ctaButton = document.querySelector('.cta-button');
+
+            setTimeout(() => {
+                if (heroTitle) heroTitle.style.animation = 'fadeInUp 1s ease forwards';
+            }, 300);
+
+            setTimeout(() => {
+                if (heroSubtitle) heroSubtitle.style.animation = 'fadeInUp 1s ease forwards 0.3s both';
+            }, 600);
+
+            setTimeout(() => {
+                if (ctaButton) ctaButton.style.animation = 'fadeInUp 1s ease forwards 0.6s both';
+            }, 900);
+        });
+
+        // Smooth scroll to top functionality
+        function scrollToTop() {
+            smoothScrollTo(0, 1200);
+        }
+
+        // Add scroll to top button
+        let scrollToTopBtn = null;
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 500) {
+                if (!scrollToTopBtn) {
+                    scrollToTopBtn = document.createElement('button');
+                    scrollToTopBtn.innerHTML = '↑';
+                    scrollToTopBtn.style.cssText = `
+                        position: fixed;
+                        bottom: 20px;
+                        right: 20px;
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 50%;
+                        background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+                        color: white;
+                        border: none;`
+                }
+            }
+        }
+        )
+                
 </script>
-</body>
-</html>
