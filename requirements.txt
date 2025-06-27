@@ -12,3 +12,5 @@ matplotlib==3.8.4
 packaging>=23.1
 
 scipy>=1.5
+nose
+
