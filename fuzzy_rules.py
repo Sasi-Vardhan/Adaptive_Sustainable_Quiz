@@ -1,16 +1,24 @@
-import sys, os, importlib.util, types
+import os
+import sys
+import types
+import importlib.util
+import numpy as np
 
-# Path to the actual skfuzzy module inside scikit-fuzzy/
+# Path to the local skfuzzy module inside scikit-fuzzy/
 skfuzzy_path = os.path.join(os.path.dirname(__file__), "scikit-fuzzy", "skfuzzy")
 
-# Create and register root module
+# Register base package
 skfuzzy_module = types.ModuleType("skfuzzy")
 sys.modules["skfuzzy"] = skfuzzy_module
 
-# Recursively import all skfuzzy submodules
+# Recursively import all skfuzzy submodules (excluding tests)
 for root, dirs, files in os.walk(skfuzzy_path):
+    # Skip test folders
+    if "test" in root or "tests" in root:
+        continue
+
     for file in files:
-        if file.endswith(".py"):
+        if file.endswith(".py") and not file.startswith("test"):
             full_path = os.path.join(root, file)
             rel_path = os.path.relpath(full_path, skfuzzy_path)
             mod_name = "skfuzzy." + rel_path.replace(os.sep, ".").replace(".py", "")
@@ -21,10 +29,12 @@ for root, dirs, files in os.walk(skfuzzy_path):
             mod = importlib.util.module_from_spec(spec)
             sys.modules[mod_name] = mod
             spec.loader.exec_module(mod)
+
+# Now import normally
 import skfuzzy as fuzz
 from skfuzzy import control as ctrl
 
-# === Your original fuzzy system code === #
+# === Your fuzzy logic system === #
 def setup_fuzzy_system():
     total_correct = ctrl.Antecedent(np.arange(0, 16, 1), 'total_correct')
     success_rate = ctrl.Antecedent(np.arange(0, 1.01, 0.01), 'success_rate')
