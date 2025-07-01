@@ -7,7 +7,8 @@ import os
 FERNET_KEY = os.getenv("FERNET_KEY").encode()
 fernet = Fernet(FERNET_KEY)
 
-WHITELIST_ROUTES = ['/', 'auth.login', 'auth.signup','auth.forgot-password']
+WHITELIST_ROUTES = ['/', 'auth.login', 'auth.signup', 'auth.forgot_password']
+
 
 def decrypt_user_token(token):
     try:
